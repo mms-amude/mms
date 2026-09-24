@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -27,6 +26,10 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet">
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
@@ -514,13 +517,9 @@ nav a:hover {
     border-radius: 14px;
 
     padding:
-
         0
-
         55px
-
         0
-
         20px;
 
     font-family: inherit;
@@ -629,7 +628,6 @@ nav a:hover {
     background: white;
 
     border:
-
         1px solid var(--border);
 
     border-radius: var(--radius);
@@ -643,9 +641,7 @@ nav a:hover {
     box-shadow: var(--shadow);
 
     transition:
-
         transform .3s,
-
         box-shadow .3s;
 
 }
@@ -783,7 +779,6 @@ nav a:hover {
     background: white;
 
     border:
-
         1px solid var(--border);
 
     border-radius: 15px;
@@ -809,7 +804,6 @@ nav a:hover {
     height: 190px;
 
     background:
-
         linear-gradient(
             135deg,
             var(--navy),
@@ -824,6 +818,8 @@ nav a:hover {
 
     position: relative;
 
+    overflow: hidden;
+
 }
 
 
@@ -836,10 +832,26 @@ nav a:hover {
     inset: 14px;
 
     border:
-
         1px solid rgba(199,164,91,0.25);
 
     border-radius: 9px;
+
+}
+
+
+.item-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
 
 }
 
@@ -1320,6 +1332,32 @@ footer p {
 
 
 /* =====================================================
+   تحميل البيانات
+===================================================== */
+
+.loading {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: var(--muted);
+
+}
+
+
+.loading-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =====================================================
    Tablet
 ===================================================== */
 
@@ -1718,8 +1756,6 @@ footer p {
     <div class="specialties">
 
 
-        <!-- Android -->
-
         <div
             class="specialty"
             onclick="filterType('android')">
@@ -1740,8 +1776,6 @@ footer p {
 
 
 
-        <!-- Computer -->
-
         <div
             class="specialty"
             onclick="filterType('computer')">
@@ -1761,8 +1795,6 @@ footer p {
         </div>
 
 
-
-        <!-- Books -->
 
         <div
             class="specialty"
@@ -1815,412 +1847,24 @@ footer p {
         class="items-grid"
         id="itemsGrid">
 
+        <div class="loading">
 
-        <!-- =========================================
-             تطبيق
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="android"
-            data-search="تطبيق المصحف القرآن اندرويد">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    📱
-                </div>
-
+            <div class="loading-icon">
+                ⏳
             </div>
 
+            <h3>
+                جاري تحميل محتويات المكتبة...
+            </h3>
 
-            <div class="item-content">
-
-                <div class="item-type">
-                    تطبيق أندرويد
-                </div>
-
-                <div class="item-title">
-                    تطبيق المصحف الشريف
-                </div>
-
-                <div class="item-description">
-                    تطبيق تجريبي يمكن استبداله
-                    بتطبيقك الحقيقي.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'تطبيق المصحف الشريف',
-                    'android'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
+            <p>
+                يرجى الانتظار قليلاً
+            </p>
 
         </div>
-
-
-
-        <!-- =========================================
-             تطبيق 2
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="android"
-            data-search="تطبيق الأذكار أندرويد">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    📲
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    تطبيق أندرويد
-                </div>
-
-                <div class="item-title">
-                    تطبيق الأذكار
-                </div>
-
-                <div class="item-description">
-                    نموذج لتطبيق يمكن إضافته
-                    إلى المكتبة.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'تطبيق الأذكار',
-                    'android'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================================
-             برنامج
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="computer"
-            data-search="برنامج مدرستي my school كمبيوتر">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    💻
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    برنامج كمبيوتر
-                </div>
-
-                <div class="item-title">
-                    مدرستي My School
-                </div>
-
-                <div class="item-description">
-                    برنامج لإدارة البيانات المدرسية.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'مدرستي My School',
-                    'computer'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================================
-             برنامج 2
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="computer"
-            data-search="برنامج إدارة الطلاب كمبيوتر">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    🖥
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    برنامج كمبيوتر
-                </div>
-
-                <div class="item-title">
-                    نظام إدارة الطلاب
-                </div>
-
-                <div class="item-description">
-                    نموذج لبرنامج إداري للمدارس.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'نظام إدارة الطلاب',
-                    'computer'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================================
-             كتاب
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="books"
-            data-search="كتاب القرآن الكريم PDF">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    📖
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    كتاب PDF
-                </div>
-
-                <div class="item-title">
-                    القرآن الكريم
-                </div>
-
-                <div class="item-description">
-                    كتاب رقمي بصيغة PDF.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'القرآن الكريم',
-                    'books'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================================
-             كتاب 2
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="books"
-            data-search="رياض الصالحين PDF">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    📚
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    كتاب PDF
-                </div>
-
-                <div class="item-title">
-                    رياض الصالحين
-                </div>
-
-                <div class="item-description">
-                    كتاب رقمي بصيغة PDF.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'رياض الصالحين',
-                    'books'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================================
-             كتاب 3
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="books"
-            data-search="تفسير ابن كثير PDF">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    📜
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    كتاب PDF
-                </div>
-
-                <div class="item-title">
-                    تفسير ابن كثير
-                </div>
-
-                <div class="item-description">
-                    نموذج لكتاب رقمي PDF.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'تفسير ابن كثير',
-                    'books'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================================
-             برنامج 3
-        ========================================== -->
-
-        <div
-            class="item-card"
-            data-type="computer"
-            data-search="برنامج حسابات Windows">
-
-
-            <div class="item-image">
-
-                <div class="item-icon">
-                    ⚙
-                </div>
-
-            </div>
-
-
-            <div class="item-content">
-
-                <div class="item-type">
-                    برنامج كمبيوتر
-                </div>
-
-                <div class="item-title">
-                    برنامج إدارة البيانات
-                </div>
-
-                <div class="item-description">
-                    نموذج لبرنامج Windows.
-                </div>
-
-                <button
-                    class="details-button"
-                    onclick="showDetails(
-                    'برنامج إدارة البيانات',
-                    'computer'
-                    )">
-
-                    التفاصيل
-
-                </button>
-
-            </div>
-
-        </div>
-
 
     </div>
 
-
-    <!-- لا توجد نتائج -->
 
     <div
         id="noResults"
@@ -2291,7 +1935,7 @@ footer p {
             <div
                 class="stat-number"
                 id="androidCount">
-                2
+                0
             </div>
 
             <div class="stat-label">
@@ -2306,7 +1950,7 @@ footer p {
             <div
                 class="stat-number"
                 id="computerCount">
-                3
+                0
             </div>
 
             <div class="stat-label">
@@ -2321,7 +1965,7 @@ footer p {
             <div
                 class="stat-number"
                 id="bookCount">
-                3
+                0
             </div>
 
             <div class="stat-label">
@@ -2415,6 +2059,7 @@ footer p {
             <div class="modal-buttons">
 
                 <button
+                    id="downloadButton"
                     class="modal-button"
                     onclick="openDownload()">
 
@@ -2442,6 +2087,33 @@ footer p {
 
 
 <script>
+
+/* =====================================================
+   Supabase
+===================================================== */
+
+const SUPABASE_URL =
+    "https://topktljgtexniilikpwa.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_Uu4yVJnpnUh4o3aYHnzGBA_XeDXosEt";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   بيانات المكتبة
+===================================================== */
+
+let libraryItems = [];
+
+let currentItem = null;
+
 
 /* =====================================================
    القائمة الهاتفية
@@ -2481,20 +2153,309 @@ function closeMenu() {
 
 
 /* =====================================================
+   جلب البيانات من Supabase
+===================================================== */
+
+async function loadLibrary() {
+
+    const grid =
+        document.getElementById(
+            "itemsGrid"
+        );
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("library_items")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Supabase error:",
+                error
+            );
+
+            grid.innerHTML = `
+
+                <div class="loading">
+
+                    <div class="loading-icon">
+                        ⚠️
+                    </div>
+
+                    <h3>
+                        تعذر تحميل محتويات المكتبة
+                    </h3>
+
+                    <p>
+                        تحقق من اتصال قاعدة البيانات.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        libraryItems = data || [];
+
+
+        renderItems(libraryItems);
+
+        updateCounters();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        grid.innerHTML = `
+
+            <div class="loading">
+
+                <div class="loading-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    حدث خطأ أثناء تحميل المكتبة
+                </h3>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   رسم البطاقات
+===================================================== */
+
+function renderItems(items) {
+
+    const grid =
+        document.getElementById(
+            "itemsGrid"
+        );
+
+
+    const noResults =
+        document.getElementById(
+            "noResults"
+        );
+
+
+    if (!items || items.length === 0) {
+
+        grid.innerHTML = "";
+
+        noResults.style.display = "block";
+
+        return;
+
+    }
+
+
+    noResults.style.display = "none";
+
+
+    grid.innerHTML =
+        items.map(function(item) {
+
+            let icon = "📱";
+
+            let typeName = "تطبيق أندرويد";
+
+
+            if (item.type === "computer") {
+
+                icon = "💻";
+
+                typeName =
+                    "برنامج كمبيوتر";
+
+            }
+
+
+            if (item.type === "books") {
+
+                icon = "📚";
+
+                typeName =
+                    "كتاب PDF";
+
+            }
+
+
+            let imageHTML = "";
+
+
+            if (
+                item.image_url &&
+                item.image_url.trim() !== ""
+            ) {
+
+                imageHTML = `
+
+                    <img
+                        src="${escapeHTML(item.image_url)}"
+                        alt="${escapeHTML(item.title)}"
+                        onerror="this.style.display='none';">
+
+                `;
+
+            }
+
+
+            const searchText = [
+
+                item.title || "",
+
+                item.author || "",
+
+                item.description || "",
+
+                item.version || "",
+
+                typeName
+
+            ].join(" ").toLowerCase();
+
+
+            return `
+
+                <div
+                    class="item-card"
+                    data-type="${escapeHTML(item.type)}"
+                    data-search="${escapeHTML(searchText)}">
+
+                    <div class="item-image">
+
+                        ${imageHTML}
+
+                        <div class="item-icon">
+
+                            ${icon}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="item-content">
+
+                        <div class="item-type">
+
+                            ${typeName}
+
+                        </div>
+
+
+                        <div class="item-title">
+
+                            ${escapeHTML(item.title)}
+
+                        </div>
+
+
+                        <div class="item-description">
+
+                            ${escapeHTML(
+                                item.description ||
+                                (
+                                    item.type === "books"
+                                    ? "كتاب رقمي بصيغة PDF."
+                                    : "محتوى رقمي متوفر في المكتبة."
+                                )
+                            )}
+
+                        </div>
+
+
+                        <button
+                            class="details-button"
+                            onclick="showDetailsById(${Number(item.id)})">
+
+                            التفاصيل
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    updateCounters();
+
+}
+
+
+
+/* =====================================================
+   حماية النصوص القادمة من قاعدة البيانات
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =====================================================
    البحث
 ===================================================== */
 
 function searchItems() {
 
-
     const search =
         document
-        .getElementById(
-            "searchInput"
-        )
-        .value
-        .toLowerCase()
-        .trim();
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
 
 
     const cards =
@@ -2508,10 +2469,9 @@ function searchItems() {
 
     cards.forEach(function(card) {
 
-
         const text =
             card.dataset.search
-            .toLowerCase();
+                .toLowerCase();
 
 
         if (
@@ -2548,21 +2508,24 @@ function searchItems() {
 
 function filterType(type) {
 
-
     const cards =
         document.querySelectorAll(
             ".item-card"
         );
 
 
-    cards.forEach(function(card) {
+    let found = 0;
 
+
+    cards.forEach(function(card) {
 
         if (
             card.dataset.type === type
         ) {
 
             card.style.display = "";
+
+            found++;
 
         } else {
 
@@ -2575,7 +2538,10 @@ function filterType(type) {
 
     document.getElementById(
         "noResults"
-    ).style.display = "none";
+    ).style.display =
+        found === 0
+        ? "block"
+        : "none";
 
 
     document.getElementById(
@@ -2594,20 +2560,30 @@ function filterType(type) {
 
 
 /* =====================================================
-   نافذة التفاصيل
+   عرض التفاصيل
 ===================================================== */
 
-let currentItem = "";
+function showDetailsById(id) {
+
+    const item =
+        libraryItems.find(
+            function(element) {
+
+                return Number(element.id) ===
+                    Number(id);
+
+            }
+        );
 
 
+    if (!item) {
 
-function showDetails(
-    title,
-    type
-) {
+        return;
+
+    }
 
 
-    currentItem = title;
+    currentItem = item;
 
 
     const modal =
@@ -2634,53 +2610,101 @@ function showDetails(
         );
 
 
-    modalTitle.textContent =
-        title;
-
-
-    if (type === "android") {
-
+    if (item.type === "android") {
 
         modalIcon.textContent = "📱";
 
-
-        modalDescription.textContent =
-            "هذا مثال لصفحة تطبيق أندرويد. " +
-            "يمكننا لاحقاً إضافة صورة التطبيق، " +
-            "رقم الإصدار، الحجم، وصف كامل، " +
-            "ومتطلبات التشغيل ورابط تحميل APK.";
-
-
     }
 
-
-    else if (type === "computer") {
-
+    else if (item.type === "computer") {
 
         modalIcon.textContent = "💻";
 
+    }
 
-        modalDescription.textContent =
-            "هذا مثال لصفحة برنامج كمبيوتر. " +
-            "يمكننا لاحقاً إضافة إصدار البرنامج، " +
-            "حجمه، نظام التشغيل، الوصف الكامل " +
-            "ورابط التحميل.";
+    else {
 
+        modalIcon.textContent = "📚";
 
     }
 
 
+    modalTitle.textContent =
+        item.title || "بدون عنوان";
+
+
+    let description = "";
+
+
+    if (item.description) {
+
+        description +=
+            item.description;
+
+    }
+
+
+    if (
+        item.author &&
+        item.type === "books"
+    ) {
+
+        description +=
+            "\n\nالمؤلف: " +
+            item.author;
+
+    }
+
+
+    if (
+        item.version &&
+        item.type !== "books"
+    ) {
+
+        description +=
+            "\n\nالإصدار: " +
+            item.version;
+
+    }
+
+
+    if (!description) {
+
+        description =
+            "لا توجد معلومات إضافية.";
+
+    }
+
+
+    modalDescription.textContent =
+        description;
+
+
+    const downloadButton =
+        document.getElementById(
+            "downloadButton"
+        );
+
+
+    if (
+        item.file_url &&
+        item.file_url.trim() !== ""
+    ) {
+
+        downloadButton.style.display =
+            "block";
+
+        downloadButton.textContent =
+            item.type === "books"
+            ? "قراءة / تحميل PDF"
+            : "تحميل";
+
+    }
+
     else {
 
-
-        modalIcon.textContent = "📚";
-
-
-        modalDescription.textContent =
-            "هذا مثال لصفحة كتاب رقمي. " +
-            "يمكننا لاحقاً إضافة غلاف الكتاب، " +
-            "اسم المؤلف، عدد الصفحات، نبذة " +
-            "عن الكتاب وزر قراءة وتحميل PDF.";
+        downloadButton.style.display =
+            "none";
 
     }
 
@@ -2725,21 +2749,19 @@ function closeModalOutside(event) {
 
 function openDownload() {
 
+    if (
+        !currentItem ||
+        !currentItem.file_url
+    ) {
 
-    /*
-       سنضع رابط التحميل الحقيقي
-       لكل تطبيق / برنامج / كتاب لاحقاً.
+        return;
 
-       مثال:
-
-       window.location.href =
-       "https://example.com/file.apk";
-
-    */
+    }
 
 
-    alert(
-        "سنضع رابط التحميل أو القراءة هنا."
+    window.open(
+        currentItem.file_url,
+        "_blank"
     );
 
 }
@@ -2753,7 +2775,6 @@ function openDownload() {
 window.addEventListener(
     "scroll",
     function() {
-
 
         const button =
             document.getElementById(
@@ -2802,7 +2823,6 @@ window.addEventListener(
     "resize",
     function() {
 
-
         if (
             window.innerWidth > 700
         ) {
@@ -2819,58 +2839,39 @@ window.addEventListener(
 
 
 /* =====================================================
-   تحديث أعداد العناصر تلقائياً
+   تحديث الإحصائيات
 ===================================================== */
 
 function updateCounters() {
 
+    const android =
+        libraryItems.filter(
+            function(item) {
 
-    const cards =
-        document.querySelectorAll(
-            ".item-card"
-        );
+                return item.type === "android";
 
-
-    let android = 0;
-
-    let computer = 0;
-
-    let books = 0;
+            }
+        ).length;
 
 
-    cards.forEach(function(card) {
+    const computer =
+        libraryItems.filter(
+            function(item) {
+
+                return item.type === "computer";
+
+            }
+        ).length;
 
 
-        if (
-            card.dataset.type ===
-            "android"
-        ) {
+    const books =
+        libraryItems.filter(
+            function(item) {
 
-            android++;
+                return item.type === "books";
 
-        }
-
-
-        if (
-            card.dataset.type ===
-            "computer"
-        ) {
-
-            computer++;
-
-        }
-
-
-        if (
-            card.dataset.type ===
-            "books"
-        ) {
-
-            books++;
-
-        }
-
-    });
+            }
+        ).length;
 
 
     document.getElementById(
@@ -2890,8 +2891,12 @@ function updateCounters() {
 }
 
 
-updateCounters();
 
+/* =====================================================
+   تشغيل الموقع
+===================================================== */
+
+loadLibrary();
 
 </script>
 
@@ -2899,4 +2904,3 @@ updateCounters();
 </body>
 
 </html>
-```
