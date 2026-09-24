@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مكتبة آل تزكى</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   الإعدادات العامة
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background: #f6f3ec;
+    color: #17202a;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   المتغيرات
+===================================================== */
+
+:root {
+    --navy: #102a43;
+    --navy-dark: #071c2e;
+    --navy-light: #1d405e;
+
+    --gold: #c6a15b;
+    --gold-light: #dfc78d;
+
+    --cream: #f6f3ec;
+    --white: #ffffff;
+
+    --text: #1b2631;
+    --text-light: #68737d;
+
+    --border: #e7e0d2;
+
+    --shadow:
+        0 10px 30px rgba(16, 42, 67, 0.08);
+}
+
+/* =====================================================
+   شريط علوي
+===================================================== */
+
+.top-bar {
+    background: var(--navy-dark);
+    color: #fff;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+}
+
+.top-bar span {
+    color: var(--gold-light);
+}
+
+/* =====================================================
+   Header
+===================================================== */
+
+header {
+    background: var(--navy);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+}
+
+/* الشعار */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--gold);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: var(--gold-light);
+
+    font-size: 21px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.logo-subtitle {
+    font-size: 11px;
+    color: var(--gold-light);
+}
+
+/* القائمة */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background: rgba(198,161,91,0.16);
+    color: var(--gold-light);
+}
+
+/* زر القائمة */
+
+.menu-button {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: transparent;
+    color: white;
+
+    border-radius: 8px;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+/* =====================================================
+   Hero
+===================================================== */
+
+.hero {
+    background:
+        linear-gradient(
+            135deg,
+            #102a43 0%,
+            #163b59 60%,
+            #1e4a68 100%
+        );
+
+    color: white;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(198,161,91,0.12);
+
+    top: -220px;
+    left: -100px;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(198,161,91,0.10);
+
+    bottom: -200px;
+    right: -100px;
+}
+
+.hero-inner {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 75px 20px 80px;
+
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+}
+
+.hero-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: auto auto 20px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--gold);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 34px;
+
+    color: var(--gold-light);
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: var(--gold-light);
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: rgba(255,255,255,0.78);
+
+    font-size: 16px;
+}
+
+/* =====================================================
+   البحث
+===================================================== */
+
+.search-area {
+    max-width: 720px;
+
+    margin: 30px auto 0;
+
+    position: relative;
+}
+
+.search-area input {
+    width: 100%;
+
+    height: 58px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 0 58px 0 20px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.search-icon {
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--navy);
+
+    font-size: 20px;
+}
+
+/* =====================================================
+   المحتوى
+===================================================== */
+
+.container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 55px 20px;
+}
+
+/* =====================================================
+   عنوان القسم
+===================================================== */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.section-title {
+    position: relative;
+
+    padding-right: 15px;
+}
+
+.section-title::before {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 7px;
+
+    width: 4px;
+    height: 28px;
+
+    background: var(--gold);
+
+    border-radius: 10px;
+}
+
+.section-title h2 {
+    font-size: 25px;
+    color: var(--navy);
+
+    font-weight: 800;
+}
+
+.section-title p {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* =====================================================
+   التصنيفات
+===================================================== */
+
+.categories {
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+
+    margin-bottom: 35px;
+}
+
+.categories::-webkit-scrollbar {
+    height: 4px;
+}
+
+.categories::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+
+.category {
+    flex-shrink: 0;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    color: var(--navy);
+
+    padding: 9px 18px;
+
+    border-radius: 30px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+.category:hover,
+.category.active {
+    background: var(--navy);
+
+    border-color: var(--navy);
+
+    color: white;
+}
+
+/* =====================================================
+   شبكة الكتب
+===================================================== */
+
+.books-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+/* =====================================================
+   بطاقة الكتاب
+===================================================== */
+
+.book-card {
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+
+    animation: fadeIn 0.5s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(16,42,67,0.14);
+}
+
+/* صورة الكتاب */
+
+.book-cover {
+    height: 230px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--navy-light)
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.book-cover::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80%;
+    height: 80%;
+
+    border: 1px solid rgba(198,161,91,0.25);
+
+    border-radius: 8px;
+}
+
+.book-symbol {
+    font-size: 50px;
+
+    color: var(--gold-light);
+
+    z-index: 2;
+}
+
+.book-content {
+    padding: 18px;
+}
+
+.book-category {
+    font-size: 11px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+}
+
+.book-title {
+    font-size: 17px;
+
+    color: var(--navy);
+
+    font-weight: 800;
+
+    margin-bottom: 4px;
+
+    line-height: 1.5;
+}
+
+.book-author {
+    color: var(--text-light);
+
+    font-size: 12px;
+
+    margin-bottom: 15px;
+}
+
+.book-button {
+    width: 100%;
+
+    border: none;
+
+    background: var(--navy);
+
+    color: white;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.book-button:hover {
+    background: var(--gold);
+
+    color: var(--navy-dark);
+}
+
+/* =====================================================
+   رسالة عدم وجود نتائج
+===================================================== */
+
+.no-results {
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    color: var(--text-light);
+}
+
+.no-results-icon {
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+/* =====================================================
+   إحصائيات
+===================================================== */
+
+.stats {
+    background: var(--navy);
+
+    margin-top: 20px;
+}
+
+.stats-inner {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    padding: 35px 20px;
+
+    gap: 20px;
+}
+
+.stat {
+    text-align: center;
+
+    color: white;
+
+    border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+.stat:last-child {
+    border-left: none;
+}
+
+.stat-number {
+    color: var(--gold-light);
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+.stat-label {
+    font-size: 13px;
+
+    color: rgba(255,255,255,0.7);
+}
+
+/* =====================================================
+   حول المكتبة
+===================================================== */
+
+.about {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 30px;
+}
+
+.about h2 {
+    color: var(--navy);
+
+    margin-bottom: 10px;
+
+    font-size: 23px;
+}
+
+.about p {
+    color: var(--text-light);
+
+    font-size: 14px;
+
+    line-height: 2;
+}
+
+/* =====================================================
+   Footer
+===================================================== */
+
+footer {
+    background: var(--navy-dark);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 35px 20px;
+}
+
+.footer-logo {
+    color: var(--gold-light);
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+}
+
+footer p {
+    font-size: 12px;
+
+    color: rgba(255,255,255,0.6);
+}
+
+.footer-line {
+    width: 60px;
+
+    height: 2px;
+
+    background: var(--gold);
+
+    margin: 15px auto;
+}
+
+/* =====================================================
+   زر العودة للأعلى
+===================================================== */
+
+#topButton {
+    position: fixed;
+
+    bottom: 20px;
+    left: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--navy-dark);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    display: none;
+
+    z-index: 999;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* =====================================================
+   القائمة الهاتفية
+===================================================== */
+
+.mobile-menu {
+    display: none;
+
+    background: var(--navy-dark);
+
+    padding: 10px 20px 20px;
+}
+
+.mobile-menu a {
+    display: block;
+
+    padding: 12px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.mobile-menu a:hover {
+    color: var(--gold-light);
+}
+
+/* =====================================================
+   Animation
+===================================================== */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =====================================================
+   الأجهزة اللوحية
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .books-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+/* =====================================================
+   الهواتف
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .top-bar {
+        font-size: 11px;
+    }
+
+    .header-inner {
+        height: 70px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .hero-inner {
+        padding: 55px 18px 60px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .books-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 13px;
+    }
+
+    .book-cover {
+        height: 180px;
+    }
+
+    .book-symbol {
+        font-size: 38px;
+    }
+
+    .book-content {
+        padding: 13px;
+    }
+
+    .book-title {
+        font-size: 14px;
+    }
+
+    .book-author {
+        font-size: 11px;
+    }
+
+    .book-button {
+        font-size: 12px;
+        padding: 9px;
+    }
+
+    .stats-inner {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        padding: 25px 10px;
+    }
+
+    .stat-number {
+        font-size: 21px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+    }
+
+    .about {
+        padding: 25px 20px;
+    }
+
+}
+
+/* =====================================================
+   الهواتف الصغيرة
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .books-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .book-cover {
+        height: 160px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ===================================================
+     الشريط العلوي
+=================================================== -->
+
+<div class="top-bar">
+    <span>✦</span>
+      أهلاً بكم في المكتبة العربية الرقمية  
+    <span>✦</span>
+</div>
+
+
+<!-- ===================================================
+     Header
+=================================================== -->
+
+<header>
+
+    <div class="header-inner">
+
+        <a href="#" class="logo">
+
+            <div class="logo-icon">
+                📚
+            </div>
+
+            <div class="logo-text">
+
+                <div class="logo-title">
+                    مكتبة آل تزكى
+                </div>
+
+                <div class="logo-subtitle">
+                    للكتب والمصادر الإسلامية
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <nav>
+
+            <a href="#home" class="active">
+                الرئيسية
+            </a>
+
+            <a href="#books">
+                الكتب
+            </a>
+
+            <a href="#categories">
+                التصنيفات
+            </a>
+
+            <a href="#about">
+                عن المكتبة
+            </a>
+
+        </nav>
+
+
+        <button
+            class="menu-button"
+            onclick="toggleMenu()"
+            aria-label="القائمة">
+            ☰
+        </button>
+
+    </div>
+
+
+    <div id="mobileMenu" class="mobile-menu">
+
+        <a href="#home" onclick="closeMenu()">
+            الرئيسية
+        </a>
+
+        <a href="#books" onclick="closeMenu()">
+            الكتب
+        </a>
+
+        <a href="#categories" onclick="closeMenu()">
+            التصنيفات
+        </a>
+
+        <a href="#about" onclick="closeMenu()">
+            عن المكتبة
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ===================================================
+     Hero
+=================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-inner">
+
+        <div class="hero-icon">
+            📖
+        </div>
+
+        <h1>
+            مكتبة <span>آل تزكى</span>
+        </h1>
+
+        <p>
+            مكتبة إلكترونية تجمع الكتب والمراجع في مكان واحد،
+            بتصميم بسيط وأنيق وسهل الاستخدام.
+        </p>
+
+
+        <div class="search-area">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن كتاب أو مؤلف..."
+                onkeyup="searchBooks()">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================
+     المحتوى
+=================================================== -->
+
+<main class="container">
+
+
+    <!-- التصنيفات -->
+
+    <section id="categories">
+
+        <div class="section-heading">
+
+            <div class="section-title">
+
+                <h2>
+                    تصنيفات المكتبة
+                </h2>
+
+                <p>
+                    اختر التصنيف الذي ترغب بتصفحه
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="categories">
+
+            <button
+                class="category active"
+                onclick="filterBooks('all', this)">
+                الكل
+            </button>
+
+            <button
+                class="category"
+                onclick="filterBooks('quran', this)">
+                القرآن وعلومه
+            </button>
+
+            <button
+                class="category"
+                onclick="filterBooks('hadith', this)">
+                الحديث
+            </button>
+
+            <button
+                class="category"
+                onclick="filterBooks('fiqh', this)">
+                الفقه
+            </button>
+
+            <button
+                class="category"
+                onclick="filterBooks('aqeedah', this)">
+                العقيدة
+            </button>
+
+            <button
+                class="category"
+                onclick="filterBooks('history', this)">
+                التاريخ
+            </button>
+
+            <button
+                class="category"
+                onclick="filterBooks('language', this)">
+                اللغة العربية
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- الكتب -->
+
+    <section id="books">
+
+        <div class="section-heading">
+
+            <div class="section-title">
+
+                <h2>
+                    أحدث الكتب
+                </h2>
+
+                <p>
+                    مجموعة مختارة من الكتب والمراجع
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="books-grid" id="booksGrid">
+
+
+            <!-- كتاب 1 -->
+
+            <div
+                class="book-card"
+                data-category="quran"
+                data-title="القرآن الكريم"
+                data-author="القرآن الكريم">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        ۞
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        القرآن وعلومه
+                    </div>
+
+                    <div class="book-title">
+                        القرآن الكريم
+                    </div>
+
+                    <div class="book-author">
+                        كتاب الله تعالى
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('القرآن الكريم')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 2 -->
+
+            <div
+                class="book-card"
+                data-category="hadith"
+                data-title="صحيح البخاري"
+                data-author="الإمام البخاري">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        📜
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        الحديث
+                    </div>
+
+                    <div class="book-title">
+                        صحيح البخاري
+                    </div>
+
+                    <div class="book-author">
+                        الإمام البخاري
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('صحيح البخاري')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 3 -->
+
+            <div
+                class="book-card"
+                data-category="hadith"
+                data-title="رياض الصالحين"
+                data-author="الإمام النووي">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        🌿
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        الحديث
+                    </div>
+
+                    <div class="book-title">
+                        رياض الصالحين
+                    </div>
+
+                    <div class="book-author">
+                        الإمام النووي
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('رياض الصالحين')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 4 -->
+
+            <div
+                class="book-card"
+                data-category="fiqh"
+                data-title="الفقه الميسر"
+                data-author="مجموعة من العلماء">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        ⚖
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        الفقه
+                    </div>
+
+                    <div class="book-title">
+                        الفقه الميسر
+                    </div>
+
+                    <div class="book-author">
+                        مجموعة من العلماء
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('الفقه الميسر')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 5 -->
+
+            <div
+                class="book-card"
+                data-category="aqeedah"
+                data-title="العقيدة الطحاوية"
+                data-author="الإمام الطحاوي">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        ✦
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        العقيدة
+                    </div>
+
+                    <div class="book-title">
+                        العقيدة الطحاوية
+                    </div>
+
+                    <div class="book-author">
+                        الإمام الطحاوي
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('العقيدة الطحاوية')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 6 -->
+
+            <div
+                class="book-card"
+                data-category="history"
+                data-title="البداية والنهاية"
+                data-author="ابن كثير">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        🏛
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        التاريخ
+                    </div>
+
+                    <div class="book-title">
+                        البداية والنهاية
+                    </div>
+
+                    <div class="book-author">
+                        ابن كثير
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('البداية والنهاية')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 7 -->
+
+            <div
+                class="book-card"
+                data-category="language"
+                data-title="لسان العرب"
+                data-author="ابن منظور">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        ع
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        اللغة العربية
+                    </div>
+
+                    <div class="book-title">
+                        لسان العرب
+                    </div>
+
+                    <div class="book-author">
+                        ابن منظور
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('لسان العرب')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- كتاب 8 -->
+
+            <div
+                class="book-card"
+                data-category="quran"
+                data-title="تفسير ابن كثير"
+                data-author="ابن كثير">
+
+                <div class="book-cover">
+
+                    <div class="book-symbol">
+                        📚
+                    </div>
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-category">
+                        القرآن وعلومه
+                    </div>
+
+                    <div class="book-title">
+                        تفسير ابن كثير
+                    </div>
+
+                    <div class="book-author">
+                        الحافظ ابن كثير
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="openBook('تفسير ابن كثير')">
+                        قراءة الكتاب
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="no-results" id="noResults">
+
+            <div class="no-results-icon">
+                🔎
+            </div>
+
+            <h3>
+                لم نجد نتائج
+            </h3>
+
+            <p>
+                جرّب البحث باسم كتاب آخر أو مؤلف آخر.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- عن المكتبة -->
+
+    <section id="about" style="margin-top:55px">
+
+        <div class="about">
+
+            <h2>
+                عن مكتبة آل تزكى
+            </h2>
+
+            <p>
+                مكتبة إلكترونية تهدف إلى تسهيل الوصول إلى الكتب
+                والمراجع النافعة، وتنظيمها بطريقة واضحة وأنيقة
+                تساعد القارئ على الوصول إلى ما يبحث عنه بسرعة.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ===================================================
+     الإحصائيات
+=================================================== -->
+
+<section class="stats">
+
+    <div class="stats-inner">
+
+        <div class="stat">
+
+            <div
+                class="stat-number"
+                id="bookCount">
+                8
+            </div>
+
+            <div class="stat-label">
+                كتاب
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                7
+            </div>
+
+            <div class="stat-label">
+                تصنيفات
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                24/7
+            </div>
+
+            <div class="stat-label">
+                متاحة دائماً
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================
+     Footer
+=================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        مكتبة آل تزكى
+    </div>
+
+    <div class="footer-line"></div>
+
+    <p>
+        مكتبة إلكترونية للكتب والمراجع
+    </p>
+
+    <p style="margin-top:8px">
+        © 2026 جميع الحقوق محفوظة
+    </p>
+
+</footer>
+
+
+<!-- زر العودة للأعلى -->
+
+<button
+    id="topButton"
+    onclick="scrollToTop()">
+    ↑
+</button>
+
+
+<!-- ===================================================
+     JavaScript
+=================================================== -->
+
+<script>
+
+/* =====================================================
+   القائمة الهاتفية
+===================================================== */
+
+function toggleMenu() {
+
+    const menu =
+        document.getElementById("mobileMenu");
+
+    if (menu.style.display === "block") {
+
+        menu.style.display = "none";
+
+    } else {
+
+        menu.style.display = "block";
+
+    }
+
+}
+
+
+function closeMenu() {
+
+    document.getElementById("mobileMenu")
+        .style.display = "none";
+
+}
+
+
+/* =====================================================
+   البحث
+===================================================== */
+
+function searchBooks() {
+
+    const input =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const cards =
+        document.querySelectorAll(".book-card");
+
+    let found = 0;
+
+
+    cards.forEach(function(card) {
+
+        const title =
+            card.dataset.title.toLowerCase();
+
+        const author =
+            card.dataset.author.toLowerCase();
+
+        const category =
+            card.querySelector(".book-category")
+            .textContent
+            .toLowerCase();
+
+
+        if (
+            title.includes(input) ||
+            author.includes(input) ||
+            category.includes(input)
+        ) {
+
+            card.style.display = "";
+
+            found++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    if (found === 0) {
+
+        noResults.style.display = "block";
+
+    } else {
+
+        noResults.style.display = "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   تصفية التصنيفات
+===================================================== */
+
+function filterBooks(category, button) {
+
+    const cards =
+        document.querySelectorAll(".book-card");
+
+    const buttons =
+        document.querySelectorAll(".category");
+
+
+    /* إزالة الحالة النشطة */
+
+    buttons.forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    /* تفريغ البحث */
+
+    document.getElementById("searchInput").value = "";
+
+
+    let found = 0;
+
+
+    cards.forEach(function(card) {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display = "";
+
+            found++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    document.getElementById("noResults")
+        .style.display =
+        found === 0 ? "block" : "none";
+
+}
+
+
+/* =====================================================
+   فتح الكتاب
+===================================================== */
+
+function openBook(bookName) {
+
+    /*
+       هنا سنضع رابط الكتاب الحقيقي لاحقاً.
+
+       مثال:
+
+       window.location.href =
+       "https://example.com/book.pdf";
+
+    */
+
+
+    alert(
+        "سيتم فتح كتاب: " + bookName
+    );
+
+}
+
+
+/* =====================================================
+   زر العودة للأعلى
+===================================================== */
+
+window.addEventListener("scroll", function() {
+
+    const button =
+        document.getElementById("topButton");
+
+
+    if (window.scrollY > 300) {
+
+        button.style.display = "block";
+
+    } else {
+
+        button.style.display = "none";
+
+    }
+
+});
+
+
+function scrollToTop() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   إغلاق القائمة عند تغيير حجم الشاشة
+===================================================== */
+
+window.addEventListener("resize", function() {
+
+    if (window.innerWidth > 700) {
+
+        document.getElementById("mobileMenu")
+            .style.display = "none";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
