@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لوحة إدارة مكتبة عامودا الرقمية</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root {
+    --navy: #0b2239;
+    --navy-dark: #061725;
+    --navy-light: #123653;
+
+    --gold: #c7a45b;
+    --gold-light: #e1c47b;
+
+    --cream: #f6f2e9;
+    --white: #ffffff;
+
+    --text: #263238;
+    --muted: #718096;
+
+    --danger: #b42318;
+    --success: #18794e;
+
+    --shadow: 0 15px 40px rgba(6,23,37,0.10);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+}
+
+
+/* =====================================================
+   شاشة الدخول
+===================================================== */
+
+.login-screen {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(199,164,91,0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(199,164,91,0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            var(--navy-dark),
+            var(--navy)
+        );
+}
+
+.login-box {
+    width: 100%;
+    max-width: 450px;
+
+    background: rgba(255,255,255,0.97);
+
+    border-radius: 25px;
+
+    padding: 40px 30px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.30);
+
+    text-align: center;
+}
+
+.login-logo {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--navy),
+            var(--navy-light)
+        );
+
+    color: var(--gold-light);
+
+    font-size: 35px;
+}
+
+.login-box h1 {
+    color: var(--navy);
+
+    font-size: 27px;
+
+    margin-bottom: 5px;
+}
+
+.login-box > p {
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+.form-group {
+    text-align: right;
+
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--navy);
+
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+
+    width: 100%;
+
+    border: 1px solid #ddd6c8;
+
+    border-radius: 12px;
+
+    padding: 13px 15px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: white;
+
+    transition: 0.25s;
+}
+
+.form-group textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 4px rgba(199,164,91,0.10);
+}
+
+.primary-button {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            var(--gold-light)
+        );
+
+    color: var(--navy-dark);
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(199,164,91,0.25);
+}
+
+.message {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.message.error {
+    display: block;
+
+    background: #fdecec;
+
+    color: var(--danger);
+}
+
+.message.success {
+    display: block;
+
+    background: #eaf8f0;
+
+    color: var(--success);
+}
+
+
+/* =====================================================
+   لوحة الإدارة
+===================================================== */
+
+.admin {
+    display: none;
+
+    min-height: 100vh;
+}
+
+.admin.active {
+    display: block;
+}
+
+
+/* =====================================================
+   الرأس
+===================================================== */
+
+.admin-header {
+
+    min-height: 75px;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy-dark),
+            var(--navy)
+        );
+
+    color: white;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,0.15);
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    color: var(--gold-light);
+
+    border: 1px solid rgba(199,164,91,0.4);
+}
+
+.logout-button {
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.07);
+
+    color: white;
+
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition: 0.3s;
+}
+
+.logout-button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+
+/* =====================================================
+   المحتوى
+===================================================== */
+
+.container {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 35px 20px 60px;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    color: var(--navy);
+
+    font-size: 30px;
+}
+
+.page-title p {
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   الإحصائيات
+===================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.stat-card {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 17px;
+
+    border: 1px solid #e9e2d5;
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+.stat-number {
+
+    color: var(--navy);
+
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+.stat-label {
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   البطاقات
+===================================================== */
+
+.panel {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #e9e2d5;
+
+    box-shadow: var(--shadow);
+}
+
+.panel-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.panel-title h2 {
+
+    color: var(--navy);
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   نموذج الإضافة
+===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.form-actions button {
+    flex: 1;
+}
+
+.secondary-button {
+
+    border: 1px solid #ddd6c8;
+
+    background: #f7f4ed;
+
+    color: var(--navy);
+
+    border-radius: 12px;
+
+    padding: 13px;
+
+    font-family: inherit;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   جدول المحتوى
+===================================================== */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 700px;
+}
+
+th {
+
+    background: var(--navy);
+
+    color: white;
+
+    padding: 13px;
+
+    text-align: right;
+}
+
+td {
+
+    padding: 13px;
+
+    border-bottom: 1px solid #eee;
+
+    vertical-align: middle;
+}
+
+tr:hover td {
+    background: #faf8f3;
+}
+
+.type-badge {
+
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background: #f5f0e4;
+
+    color: var(--navy);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.action-button {
+
+    border: none;
+
+    padding: 7px 11px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    margin-left: 4px;
+}
+
+.edit-button {
+    background: #edf4ff;
+    color: #1455a0;
+}
+
+.delete-button {
+    background: #fdecec;
+    color: var(--danger);
+}
+
+
+/* =====================================================
+   حالة فارغة
+===================================================== */
+
+.empty {
+
+    text-align: center;
+
+    padding: 35px;
+
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   الهاتف
+===================================================== */
+
+@media(max-width: 850px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .admin-header {
+        padding: 0 15px;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .stats {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .login-box {
+        padding: 30px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     شاشة تسجيل الدخول
+===================================================== -->
+
+<section class="login-screen" id="loginScreen">
+
+    <div class="login-box">
+
+        <div class="login-logo">
+            📚
+        </div>
+
+        <h1>
+            مكتبة عامودا الرقمية
+        </h1>
+
+        <p>
+            تسجيل الدخول إلى لوحة الإدارة
+        </p>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="أدخل البريد الإلكتروني"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="أدخل كلمة المرور"
+                    required>
+
+            </div>
+
+
+            <button
+                class="primary-button"
+                type="submit">
+
+                🔐 تسجيل الدخول
+
+            </button>
+
+        </form>
+
+
+        <div
+            class="message"
+            id="loginMessage">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     لوحة الإدارة
+===================================================== -->
+
+<section class="admin" id="adminPanel">
+
+
+    <header class="admin-header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                📚
+            </div>
+
+            <span>
+                لوحة إدارة المكتبة
+            </span>
+
+        </div>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            تسجيل الخروج
+
+        </button>
+
+    </header>
+
+
+
+    <main class="container">
+
+
+        <div class="page-title">
+
+            <h1>
+                لوحة التحكم
+            </h1>
+
+            <p>
+                إدارة تطبيقات أندرويد وبرامج الكمبيوتر والكتب الرقمية
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             الإحصائيات
+        ================================================= -->
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="totalCount">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    إجمالي المحتوى
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📱
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="androidCount">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    تطبيقات أندرويد
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💻
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="computerCount">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    برامج الكمبيوتر
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📖
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="booksCount">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    كتب PDF
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             إضافة / تعديل
+        ================================================= -->
+
+        <div class="panel">
+
+            <div class="panel-title">
+
+                <h2 id="formTitle">
+                    ➕ إضافة محتوى جديد
+                </h2>
+
+            </div>
+
+
+            <form id="itemForm">
+
+                <input
+                    type="hidden"
+                    id="editId">
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            نوع المحتوى *
+                        </label>
+
+                        <select
+                            id="type"
+                            required>
+
+                            <option value="">
+                                اختر النوع
+                            </option>
+
+                            <option value="android">
+                                📱 تطبيق أندرويد
+                            </option>
+
+                            <option value="computer">
+                                💻 برنامج كمبيوتر
+                            </option>
+
+                            <option value="books">
+                                📚 كتاب PDF
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            الاسم / العنوان *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="اسم التطبيق أو البرنامج أو الكتاب"
+                            required>
+
+                    </div>
+
+
+                    <div
+                        class="form-group"
+                        id="authorGroup">
+
+                        <label>
+                            المؤلف
+                        </label>
+
+                        <input
+                            type="text"
+                            id="author"
+                            placeholder="اسم المؤلف">
+
+                    </div>
+
+
+                    <div
+                        class="form-group"
+                        id="versionGroup">
+
+                        <label>
+                            الإصدار
+                        </label>
+
+                        <input
+                            type="text"
+                            id="version"
+                            placeholder="مثلاً 1.0">
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            الوصف
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="اكتب وصفاً مختصراً للمحتوى">
+                        </textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            رابط الصورة
+                        </label>
+
+                        <input
+                            type="url"
+                            id="imageUrl"
+                            placeholder="https://...">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            رابط الملف
+                        </label>
+
+                        <input
+                            type="url"
+                            id="fileUrl"
+                            placeholder="رابط APK أو EXE أو PDF">
+
+                    </div>
+
+
+                    <div class="full">
+
+                        <div class="form-actions">
+
+                            <button
+                                class="primary-button"
+                                type="submit">
+
+                                💾 حفظ
+
+                            </button>
+
+
+                            <button
+                                class="secondary-button"
+                                type="button"
+                                onclick="resetForm()">
+
+                                إلغاء
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <div
+                class="message"
+                id="formMessage">
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             قائمة المحتوى
+        ================================================= -->
+
+        <div class="panel">
+
+            <div class="panel-title">
+
+                <h2>
+                    📋 محتوى المكتبة
+                </h2>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                العنوان
+                            </th>
+
+                            <th>
+                                النوع
+                            </th>
+
+                            <th>
+                                الإصدار / المؤلف
+                            </th>
+
+                            <th>
+                                التاريخ
+                            </th>
+
+                            <th>
+                                الإجراءات
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="itemsTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   إعداد Supabase
+========================================================= */
+
+const SUPABASE_URL =
+    "https://topktljgtexniilikpwa.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_Uu4yVJnpnUh4o3aYHnzGBA_XeDXosEt";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+
+/* =========================================================
+   أسماء الأنواع
+========================================================= */
+
+const typeNames = {
+
+    android: "📱 تطبيق أندرويد",
+
+    computer: "💻 برنامج كمبيوتر",
+
+    books: "📚 كتاب PDF"
+
+};
+
+
+
+/* =========================================================
+   عناصر الصفحة
+========================================================= */
+
+const loginScreen =
+    document.getElementById("loginScreen");
+
+const adminPanel =
+    document.getElementById("adminPanel");
+
+
+
+/* =========================================================
+   عند فتح الصفحة
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", async function() {
+
+    const {
+        data: {
+            session
+        }
+    } = await supabaseClient.auth.getSession();
+
+
+    if (session) {
+
+        showAdmin();
+
+    } else {
+
+        showLogin();
+
+    }
+
+});
+
+
+
+/* =========================================================
+   تسجيل الدخول
+========================================================= */
+
+document.getElementById("loginForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("email")
+            .value
+            .trim();
+
+
+    const password =
+        document.getElementById("password")
+            .value;
+
+
+    showMessage(
+        "loginMessage",
+        "جاري تسجيل الدخول...",
+        "success"
+    );
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        showMessage(
+            "loginMessage",
+            "فشل تسجيل الدخول: " +
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showAdmin();
+
+});
+
+
+
+/* =========================================================
+   عرض لوحة الإدارة
+========================================================= */
+
+function showAdmin() {
+
+    loginScreen.style.display = "none";
+
+    adminPanel.classList.add("active");
+
+    loadItems();
+
+}
+
+
+
+/* =========================================================
+   عرض شاشة الدخول
+========================================================= */
+
+function showLogin() {
+
+    loginScreen.style.display = "flex";
+
+    adminPanel.classList.remove("active");
+
+}
+
+
+
+/* =========================================================
+   تسجيل الخروج
+========================================================= */
+
+async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    showLogin();
+
+}
+
+
+
+/* =========================================================
+   تغيير الحقول حسب النوع
+========================================================= */
+
+document.getElementById("type")
+.addEventListener("change", updateFields);
+
+
+function updateFields() {
+
+    const type =
+        document.getElementById("type").value;
+
+
+    const authorGroup =
+        document.getElementById("authorGroup");
+
+    const versionGroup =
+        document.getElementById("versionGroup");
+
+
+    if (type === "books") {
+
+        authorGroup.style.display = "block";
+
+        versionGroup.style.display = "none";
+
+    } else {
+
+        authorGroup.style.display = "none";
+
+        versionGroup.style.display = "block";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   إضافة / تعديل عنصر
+========================================================= */
+
+document.getElementById("itemForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const editId =
+        document.getElementById("editId").value;
+
+
+    const item = {
+
+        type:
+            document.getElementById("type").value,
+
+        title:
+            document.getElementById("title").value.trim(),
+
+        author:
+            document.getElementById("author").value.trim() || null,
+
+        version:
+            document.getElementById("version").value.trim() || null,
+
+        description:
+            document.getElementById("description").value.trim() || null,
+
+        image_url:
+            document.getElementById("imageUrl").value.trim() || null,
+
+        file_url:
+            document.getElementById("fileUrl").value.trim() || null
+
+    };
+
+
+    if (!item.type || !item.title) {
+
+        showMessage(
+            "formMessage",
+            "يرجى اختيار النوع وكتابة العنوان.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    let result;
+
+
+    if (editId) {
+
+        result =
+            await supabaseClient
+                .from("library_items")
+                .update(item)
+                .eq("id", editId);
+
+    } else {
+
+        result =
+            await supabaseClient
+                .from("library_items")
+                .insert([item]);
+
+    }
+
+
+    if (result.error) {
+
+        showMessage(
+            "formMessage",
+            "حدث خطأ: " +
+            result.error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showMessage(
+        "formMessage",
+        editId
+            ? "تم تعديل العنصر بنجاح."
+            : "تمت إضافة العنصر بنجاح.",
+        "success"
+    );
+
+
+    resetForm();
+
+    await loadItems();
+
+});
+
+
+
+/* =========================================================
+   تحميل العناصر
+========================================================= */
+
+async function loadItems() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("library_items")
+            .select("*")
+            .order("created_at", {
+                ascending: false
+            });
+
+
+    if (error) {
+
+        console.error(error);
+
+        return;
+    }
+
+
+    renderTable(data || []);
+
+    updateStats(data || []);
+
+}
+
+
+
+/* =========================================================
+   عرض الجدول
+========================================================= */
+
+function renderTable(items) {
+
+    const table =
+        document.getElementById("itemsTable");
+
+
+    if (!items.length) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    class="empty">
+
+                    لا يوجد محتوى حتى الآن.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML = "";
+
+
+    items.forEach(item => {
+
+        const tr =
+            document.createElement("tr");
+
+
+        const date =
+            item.created_at
+                ? new Date(item.created_at)
+                    .toLocaleDateString("ar")
+                : "-";
+
+
+        const meta =
+            item.type === "books"
+                ? item.author || "-"
+                : item.version || "-";
+
+
+        tr.innerHTML = `
+
+            <td>
+                <strong>
+                    ${escapeHTML(item.title)}
+                </strong>
+            </td>
+
+            <td>
+
+                <span class="type-badge">
+
+                    ${typeNames[item.type]}
+
+                </span>
+
+            </td>
+
+            <td>
+                ${escapeHTML(meta)}
+            </td>
+
+            <td>
+                ${date}
+            </td>
+
+            <td>
+
+                <button
+                    class="action-button edit-button"
+                    onclick='editItem(${JSON.stringify(item)})'>
+
+                    ✏️ تعديل
+
+                </button>
+
+                <button
+                    class="action-button delete-button"
+                    onclick="deleteItem(${item.id})">
+
+                    🗑️ حذف
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(tr);
+
+    });
+
+}
+
+
+
+/* =========================================================
+   تعديل عنصر
+========================================================= */
+
+function editItem(item) {
+
+    document.getElementById("editId")
+        .value = item.id;
+
+
+    document.getElementById("type")
+        .value = item.type;
+
+
+    document.getElementById("title")
+        .value = item.title || "";
+
+
+    document.getElementById("author")
+        .value = item.author || "";
+
+
+    document.getElementById("version")
+        .value = item.version || "";
+
+
+    document.getElementById("description")
+        .value = item.description || "";
+
+
+    document.getElementById("imageUrl")
+        .value = item.image_url || "";
+
+
+    document.getElementById("fileUrl")
+        .value = item.file_url || "";
+
+
+    document.getElementById("formTitle")
+        .textContent = "✏️ تعديل المحتوى";
+
+
+    updateFields();
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =========================================================
+   حذف عنصر
+========================================================= */
+
+async function deleteItem(id) {
+
+    const confirmed =
+        confirm(
+            "هل أنت متأكد من حذف هذا العنصر؟"
+        );
+
+
+    if (!confirmed) return;
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("library_items")
+            .delete()
+            .eq("id", id);
+
+
+    if (error) {
+
+        alert(
+            "تعذر حذف العنصر:\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    await loadItems();
+
+}
+
+
+
+/* =========================================================
+   إعادة النموذج
+========================================================= */
+
+function resetForm() {
+
+    document.getElementById("itemForm")
+        .reset();
+
+
+    document.getElementById("editId")
+        .value = "";
+
+
+    document.getElementById("formTitle")
+        .textContent =
+            "➕ إضافة محتوى جديد";
+
+
+    updateFields();
+
+}
+
+
+
+/* =========================================================
+   الإحصائيات
+========================================================= */
+
+function updateStats(items) {
+
+    const android =
+        items.filter(
+            item => item.type === "android"
+        ).length;
+
+
+    const computer =
+        items.filter(
+            item => item.type === "computer"
+        ).length;
+
+
+    const books =
+        items.filter(
+            item => item.type === "books"
+        ).length;
+
+
+    document.getElementById("totalCount")
+        .textContent = items.length;
+
+
+    document.getElementById("androidCount")
+        .textContent = android;
+
+
+    document.getElementById("computerCount")
+        .textContent = computer;
+
+
+    document.getElementById("booksCount")
+        .textContent = books;
+
+}
+
+
+
+/* =========================================================
+   الرسائل
+========================================================= */
+
+function showMessage(id, text, type) {
+
+    const element =
+        document.getElementById(id);
+
+
+    element.textContent = text;
+
+    element.className =
+        "message " + type;
+
+}
+
+
+
+/* =========================================================
+   حماية عرض النصوص
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+</script>
+
+</body>
+
+</html>
