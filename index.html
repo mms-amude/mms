@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -13,10 +14,6 @@
 
 <title>مكتبة عامودا الرقمية</title>
 
-<!-- ================================
-     خط Tajawal
-================================ -->
-
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
 
@@ -27,1526 +24,767 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet">
 
-<!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
 
-/* =====================================================
-   المتغيرات
-===================================================== */
-
 :root {
-
     --navy: #0b2239;
     --navy-2: #123754;
     --navy-3: #19496b;
-
     --gold: #c7a45b;
     --gold-light: #e2ca91;
-
     --cream: #f6f2e9;
     --cream-2: #eee8dc;
-
     --white: #ffffff;
-
     --text: #17212b;
     --muted: #6d7780;
-
     --border: #e5ded1;
-
-    --shadow:
-        0 12px 35px rgba(11,34,57,0.09);
-
+    --shadow: 0 12px 35px rgba(11,34,57,0.09);
     --radius: 18px;
 }
 
-
-/* =====================================================
-   Reset
-===================================================== */
-
 * {
-
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
 }
-
 
 body {
-
     font-family: "Tajawal", sans-serif;
-
     background: var(--cream);
-
     color: var(--text);
-
     line-height: 1.8;
-
 }
-
-
-/* =====================================================
-   الشريط العلوي
-===================================================== */
 
 .top-bar {
-
     height: 34px;
-
     background: #061827;
-
     color: rgba(255,255,255,0.75);
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     font-size: 12px;
-
 }
-
 
 .top-bar span {
-
     color: var(--gold-light);
-
 }
-
-
-/* =====================================================
-   Header
-===================================================== */
 
 header {
-
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
-
     background: rgba(11,34,57,0.97);
-
     backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,0.12);
-
+    box-shadow: 0 5px 25px rgba(0,0,0,0.12);
 }
-
 
 .header-inner {
-
     max-width: 1200px;
-
     height: 78px;
-
     margin: auto;
-
     padding: 0 20px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
 }
-
-
-/* =====================================================
-   الشعار
-===================================================== */
 
 .logo {
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
     text-decoration: none;
-
     color: white;
-
 }
-
 
 .logo-icon {
-
     width: 45px;
-
     height: 45px;
-
     border: 1px solid var(--gold);
-
     border-radius: 50%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     color: var(--gold-light);
-
     font-size: 22px;
-
 }
-
 
 .logo-name {
-
     font-size: 19px;
-
     font-weight: 800;
-
 }
-
 
 .logo-subtitle {
-
     font-size: 10px;
-
     color: var(--gold-light);
-
     margin-top: -3px;
-
 }
-
-
-/* =====================================================
-   Navigation
-===================================================== */
 
 nav {
-
     display: flex;
-
     align-items: center;
-
     gap: 5px;
-
 }
-
 
 nav a {
-
     color: rgba(255,255,255,0.88);
-
     text-decoration: none;
-
     padding: 8px 14px;
-
     border-radius: 9px;
-
     font-size: 13px;
-
     transition: 0.3s;
-
 }
-
 
 nav a:hover {
-
     background: rgba(199,164,91,0.15);
-
     color: var(--gold-light);
-
 }
-
-
-/* =====================================================
-   زر الهاتف
-===================================================== */
 
 .menu-button {
-
     display: none;
-
     width: 42px;
-
     height: 42px;
-
     border-radius: 10px;
-
     border: 1px solid rgba(255,255,255,0.2);
-
     background: transparent;
-
     color: white;
-
     font-size: 21px;
-
     cursor: pointer;
-
 }
-
-
-/* =====================================================
-   القائمة الهاتفية
-===================================================== */
 
 .mobile-menu {
-
     display: none;
-
     background: #061827;
-
     padding: 8px 18px 18px;
-
 }
-
 
 .mobile-menu a {
-
     display: block;
-
     padding: 11px;
-
     color: white;
-
     text-decoration: none;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.07);
-
+    border-bottom: 1px solid rgba(255,255,255,0.07);
     font-size: 14px;
-
 }
 
-
-/* =====================================================
-   Hero
-===================================================== */
-
 .hero {
-
     background:
-
         radial-gradient(
             circle at 15% 20%,
             rgba(199,164,91,0.14),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 85% 80%,
             rgba(255,255,255,0.05),
             transparent 30%
         ),
-
         linear-gradient(
             135deg,
             #081d30,
             #0d2d48 55%,
             #164766
         );
-
     color: white;
-
     position: relative;
-
     overflow: hidden;
-
 }
-
 
 .hero::before {
-
     content: "";
-
     position: absolute;
-
     width: 500px;
-
     height: 500px;
-
     border-radius: 50%;
-
-    border:
-        1px solid rgba(199,164,91,0.10);
-
+    border: 1px solid rgba(199,164,91,0.10);
     top: -280px;
-
     left: -150px;
-
 }
-
 
 .hero::after {
-
     content: "";
-
     position: absolute;
-
     width: 420px;
-
     height: 420px;
-
     border-radius: 50%;
-
-    border:
-        1px solid rgba(199,164,91,0.08);
-
+    border: 1px solid rgba(199,164,91,0.08);
     bottom: -250px;
-
     right: -150px;
-
 }
-
 
 .hero-inner {
-
     max-width: 1000px;
-
     margin: auto;
-
     text-align: center;
-
     padding: 78px 20px 85px;
-
     position: relative;
-
     z-index: 2;
-
 }
-
 
 .hero-icon {
-
     width: 82px;
-
     height: 82px;
-
     margin: auto auto 22px;
-
     border-radius: 50%;
-
-    border:
-        1px solid var(--gold);
-
+    border: 1px solid var(--gold);
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 38px;
-
     color: var(--gold-light);
-
-    box-shadow:
-        0 0 40px rgba(199,164,91,0.08);
-
+    box-shadow: 0 0 40px rgba(199,164,91,0.08);
 }
-
 
 .hero h1 {
-
     font-size: 43px;
-
     font-weight: 800;
-
     margin-bottom: 8px;
-
 }
-
 
 .hero h1 span {
-
     color: var(--gold-light);
-
 }
-
 
 .hero-description {
-
     max-width: 620px;
-
     margin: auto;
-
     color: rgba(255,255,255,0.75);
-
     font-size: 15px;
-
 }
-
-
-/* =====================================================
-   البحث
-===================================================== */
 
 .search-box {
-
     max-width: 680px;
-
     margin: 32px auto 0;
-
     position: relative;
-
 }
-
 
 .search-box input {
-
     width: 100%;
-
     height: 58px;
-
     border: none;
-
     outline: none;
-
     border-radius: 14px;
-
-    padding:
-        0
-        55px
-        0
-        20px;
-
+    padding: 0 55px 0 20px;
     font-family: inherit;
-
     font-size: 14px;
-
     background: white;
-
     color: var(--text);
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,0.16);
-
+    box-shadow: 0 12px 35px rgba(0,0,0,0.16);
 }
-
 
 .search-icon {
-
     position: absolute;
-
     right: 19px;
-
     top: 50%;
-
     transform: translateY(-50%);
-
     color: var(--navy);
-
     font-size: 20px;
-
 }
-
-
-/* =====================================================
-   المحتوى
-===================================================== */
 
 .container {
-
     max-width: 1200px;
-
     margin: auto;
-
     padding: 60px 20px;
-
 }
-
-
-/* =====================================================
-   عنوان الأقسام
-===================================================== */
 
 .section-heading {
-
     text-align: center;
-
     margin-bottom: 32px;
-
 }
-
 
 .section-heading h2 {
-
     color: var(--navy);
-
     font-size: 27px;
-
     font-weight: 800;
-
 }
-
 
 .section-heading p {
-
     color: var(--muted);
-
     font-size: 13px;
-
 }
-
-
-/* =====================================================
-   الاختصاصات الثلاثة
-===================================================== */
 
 .specialties {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-
     margin-bottom: 70px;
-
 }
-
 
 .specialty {
-
     position: relative;
-
     overflow: hidden;
-
     background: white;
-
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-
     padding: 35px 25px;
-
     text-align: center;
-
     cursor: pointer;
-
     box-shadow: var(--shadow);
-
-    transition:
-        transform .3s,
-        box-shadow .3s;
-
+    transition: transform .3s, box-shadow .3s;
 }
-
 
 .specialty:hover {
-
     transform: translateY(-8px);
-
-    box-shadow:
-        0 20px 45px rgba(11,34,57,0.14);
-
+    box-shadow: 0 20px 45px rgba(11,34,57,0.14);
 }
-
 
 .specialty::after {
-
     content: "";
-
     position: absolute;
-
     width: 120px;
-
     height: 120px;
-
     border-radius: 50%;
-
-    background:
-        rgba(199,164,91,0.08);
-
+    background: rgba(199,164,91,0.08);
     top: -55px;
-
     left: -45px;
-
 }
-
 
 .specialty-icon {
-
     width: 70px;
-
     height: 70px;
-
     margin: auto auto 17px;
-
     border-radius: 18px;
-
     background: var(--navy);
-
     color: var(--gold-light);
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 31px;
-
     position: relative;
-
     z-index: 2;
-
 }
-
 
 .specialty h3 {
-
     color: var(--navy);
-
     font-size: 19px;
-
     margin-bottom: 5px;
-
 }
-
 
 .specialty p {
-
     color: var(--muted);
-
     font-size: 12px;
-
 }
-
-
-/* =====================================================
-   خط ذهبي
-===================================================== */
 
 .gold-line {
-
     width: 55px;
-
     height: 3px;
-
     background: var(--gold);
-
     border-radius: 20px;
-
     margin: 12px auto 0;
-
 }
-
-
-/* =====================================================
-   أحدث الإضافات
-===================================================== */
 
 .latest {
-
     margin-top: 10px;
-
 }
-
 
 .items-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-
 }
-
-
-/* =====================================================
-   بطاقة العنصر
-===================================================== */
 
 .item-card {
-
     background: white;
-
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 15px;
-
     overflow: hidden;
-
     box-shadow: var(--shadow);
-
     transition: .3s;
-
 }
-
 
 .item-card:hover {
-
     transform: translateY(-6px);
-
 }
-
 
 .item-image {
-
     height: 190px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--navy),
-            var(--navy-3)
-        );
-
+    background: linear-gradient(135deg, var(--navy), var(--navy-3));
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     position: relative;
-
     overflow: hidden;
-
 }
-
 
 .item-image::after {
-
     content: "";
-
     position: absolute;
-
     inset: 14px;
-
-    border:
-        1px solid rgba(199,164,91,0.25);
-
+    border: 1px solid rgba(199,164,91,0.25);
     border-radius: 9px;
-
 }
-
 
 .item-image img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     position: absolute;
-
     inset: 0;
-
     z-index: 1;
-
 }
-
 
 .item-icon {
-
     font-size: 50px;
-
     color: var(--gold-light);
-
     z-index: 2;
-
 }
-
 
 .item-content {
-
     padding: 17px;
-
 }
-
 
 .item-type {
-
     font-size: 10px;
-
     color: var(--gold);
-
     font-weight: 700;
-
 }
-
 
 .item-title {
-
     color: var(--navy);
-
     font-size: 16px;
-
     font-weight: 800;
-
     margin-top: 3px;
-
 }
-
 
 .item-description {
-
     color: var(--muted);
-
     font-size: 11px;
-
     margin-top: 4px;
-
     min-height: 42px;
-
 }
-
 
 .details-button {
-
     width: 100%;
-
     border: none;
-
     background: var(--navy);
-
     color: white;
-
     padding: 9px;
-
     border-radius: 8px;
-
     font-family: inherit;
-
     cursor: pointer;
-
     margin-top: 13px;
-
     transition: .3s;
-
 }
-
 
 .details-button:hover {
-
     background: var(--gold);
-
     color: var(--navy);
-
 }
-
-
-/* =====================================================
-   الإحصائيات
-===================================================== */
 
 .stats {
-
     background: var(--navy);
-
     color: white;
-
 }
-
 
 .stats-inner {
-
     max-width: 950px;
-
     margin: auto;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     padding: 35px 20px;
-
 }
-
 
 .stat {
-
     text-align: center;
-
-    border-left:
-        1px solid rgba(255,255,255,0.12);
-
+    border-left: 1px solid rgba(255,255,255,0.12);
 }
-
 
 .stat:last-child {
-
     border-left: none;
-
 }
-
 
 .stat-number {
-
     color: var(--gold-light);
-
     font-size: 28px;
-
     font-weight: 800;
-
 }
-
 
 .stat-label {
-
     color: rgba(255,255,255,0.68);
-
     font-size: 12px;
-
 }
-
-
-/* =====================================================
-   About
-===================================================== */
 
 .about {
-
     margin-top: 65px;
-
     background: white;
-
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-
     padding: 35px;
-
     text-align: center;
-
     box-shadow: var(--shadow);
-
 }
-
 
 .about h2 {
-
     color: var(--navy);
-
     font-size: 23px;
-
 }
-
 
 .about p {
-
     max-width: 750px;
-
     margin: 10px auto 0;
-
     color: var(--muted);
-
     font-size: 13px;
-
     line-height: 2;
-
 }
-
-
-/* =====================================================
-   Footer
-===================================================== */
 
 footer {
-
     background: #061827;
-
     color: white;
-
     text-align: center;
-
     padding: 35px 20px;
-
 }
-
 
 .footer-name {
-
     color: var(--gold-light);
-
     font-weight: 800;
-
     font-size: 19px;
-
 }
-
 
 .footer-line {
-
     width: 55px;
-
     height: 2px;
-
     background: var(--gold);
-
     margin: 13px auto;
-
 }
-
 
 footer p {
-
     color: rgba(255,255,255,0.55);
-
     font-size: 11px;
-
 }
-
-
-/* =====================================================
-   زر الأعلى
-===================================================== */
 
 #topButton {
-
     position: fixed;
-
     bottom: 20px;
-
     left: 20px;
-
     width: 44px;
-
     height: 44px;
-
     border: none;
-
     border-radius: 50%;
-
     background: var(--gold);
-
     color: var(--navy);
-
     font-size: 20px;
-
     cursor: pointer;
-
     display: none;
-
     z-index: 999;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.2);
-
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
-
-
-/* =====================================================
-   نافذة التفاصيل
-===================================================== */
 
 .modal {
-
     position: fixed;
-
     inset: 0;
-
-    background:
-        rgba(3,15,25,0.75);
-
+    background: rgba(3,15,25,0.75);
     display: none;
-
     align-items: center;
-
     justify-content: center;
-
     padding: 20px;
-
     z-index: 3000;
-
 }
-
 
 .modal-box {
-
     max-width: 520px;
-
     width: 100%;
-
     background: white;
-
     border-radius: 20px;
-
     overflow: hidden;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.3);
-
-    animation:
-        modalIn .3s ease;
-
+    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+    animation: modalIn .3s ease;
 }
-
 
 .modal-header {
-
     background: var(--navy);
-
     color: white;
-
     padding: 25px;
-
     text-align: center;
-
 }
-
 
 .modal-header-icon {
-
     font-size: 42px;
-
     color: var(--gold-light);
-
 }
-
 
 .modal-header h2 {
-
     margin-top: 5px;
-
     font-size: 20px;
-
 }
-
 
 .modal-body {
-
     padding: 25px;
-
 }
-
 
 .modal-body p {
-
     color: var(--muted);
-
     font-size: 13px;
-
     line-height: 2;
-
+    white-space: pre-line;
 }
-
 
 .modal-buttons {
-
     display: flex;
-
     gap: 10px;
-
     margin-top: 20px;
-
 }
-
 
 .modal-button {
-
     flex: 1;
-
     border: none;
-
     border-radius: 9px;
-
     padding: 11px;
-
     font-family: inherit;
-
     cursor: pointer;
-
     background: var(--navy);
-
     color: white;
-
 }
-
 
 .modal-button.close {
-
     background: var(--cream-2);
-
     color: var(--navy);
-
 }
 
-
 @keyframes modalIn {
-
     from {
-
         opacity: 0;
-
         transform: scale(.93);
-
     }
 
     to {
-
         opacity: 1;
-
         transform: scale(1);
-
     }
-
 }
-
-
-/* =====================================================
-   لا توجد نتائج
-===================================================== */
 
 .no-results {
-
     display: none;
-
     text-align: center;
-
     padding: 55px 20px;
-
     color: var(--muted);
-
 }
-
 
 .no-results div {
-
     font-size: 45px;
-
     margin-bottom: 8px;
-
 }
-
-
-/* =====================================================
-   تحميل البيانات
-===================================================== */
 
 .loading {
-
     grid-column: 1 / -1;
-
     text-align: center;
-
     padding: 70px 20px;
-
     color: var(--muted);
-
 }
-
 
 .loading-icon {
-
     font-size: 45px;
-
     margin-bottom: 10px;
-
 }
-
-
-/* =====================================================
-   Tablet
-===================================================== */
 
 @media (max-width: 950px) {
 
     .items-grid {
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
+        grid-template-columns: repeat(3, 1fr);
     }
 
 }
-
-
-/* =====================================================
-   Mobile
-===================================================== */
 
 @media (max-width: 700px) {
 
     .top-bar {
-
         font-size: 10px;
-
     }
-
 
     .header-inner {
-
         height: 70px;
-
     }
-
 
     nav {
-
         display: none;
-
     }
-
 
     .menu-button {
-
         display: block;
-
     }
-
 
     .hero-inner {
-
         padding: 60px 18px 65px;
-
     }
-
 
     .hero h1 {
-
         font-size: 30px;
-
     }
-
 
     .hero-description {
-
         font-size: 12px;
-
     }
-
 
     .specialties {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
         gap: 15px;
-
         margin-bottom: 55px;
-
     }
-
 
     .specialty {
-
         padding: 25px;
-
     }
-
 
     .items-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-
     }
-
 
     .item-image {
-
         height: 160px;
-
     }
-
 
     .item-content {
-
         padding: 12px;
-
     }
-
 
     .item-title {
-
         font-size: 14px;
-
     }
-
 
     .item-description {
-
         font-size: 10px;
-
     }
-
 
     .details-button {
-
         font-size: 11px;
-
     }
-
 
     .stats-inner {
-
         padding: 27px 10px;
-
     }
-
 
     .stat-number {
-
         font-size: 21px;
-
     }
-
 
     .stat-label {
-
         font-size: 10px;
-
     }
 
-
     .about {
-
         padding: 25px 18px;
-
     }
 
 }
 
-
-/* =====================================================
-   Small phones
-===================================================== */
-
 @media (max-width: 380px) {
 
     .items-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
     }
-
 
     .item-image {
-
         height: 145px;
-
     }
 
-
     .hero h1 {
-
         font-size: 26px;
-
     }
 
 }
@@ -1558,42 +796,24 @@ footer p {
 
 <body>
 
-
-<!-- ===================================================
-     الشريط العلوي
-=================================================== -->
-
 <div class="top-bar">
-
     <span>✦</span>
-
     &nbsp;
-
     مكتبة عامودا الرقمية — المعرفة في متناول يدك
-
     &nbsp;
-
     <span>✦</span>
-
 </div>
 
-
-
-<!-- ===================================================
-     Header
-=================================================== -->
 
 <header>
 
     <div class="header-inner">
-
 
         <a href="#home" class="logo">
 
             <div class="logo-icon">
                 📚
             </div>
-
 
             <div>
 
@@ -1671,39 +891,25 @@ footer p {
 </header>
 
 
-
-<!-- ===================================================
-     Hero
-=================================================== -->
-
 <section class="hero" id="home">
 
     <div class="hero-inner">
-
 
         <div class="hero-icon">
             📖
         </div>
 
-
         <h1>
-
             مكتبة
-
             <span>
                 عامودا الرقمية
             </span>
-
         </h1>
 
-
         <p class="hero-description">
-
             منصة رقمية تجمع التطبيقات والبرامج والكتب
             في مكان واحد، بتصميم بسيط وأنيق وسهل الاستخدام.
-
         </p>
-
 
         <div class="search-box">
 
@@ -1724,17 +930,7 @@ footer p {
 </section>
 
 
-
-<!-- ===================================================
-     Main
-=================================================== -->
-
 <main class="container">
-
-
-<!-- ===================================================
-     الاختصاصات
-=================================================== -->
 
 <section id="specialties">
 
@@ -1755,7 +951,6 @@ footer p {
 
     <div class="specialties">
 
-
         <div
             class="specialty"
             onclick="filterType('android')">
@@ -1773,7 +968,6 @@ footer p {
             </p>
 
         </div>
-
 
 
         <div
@@ -1795,7 +989,6 @@ footer p {
         </div>
 
 
-
         <div
             class="specialty"
             onclick="filterType('books')">
@@ -1814,19 +1007,12 @@ footer p {
 
         </div>
 
-
     </div>
 
 </section>
 
 
-
-<!-- ===================================================
-     أحدث الإضافات
-=================================================== -->
-
 <section id="latest" class="latest">
-
 
     <div class="section-heading">
 
@@ -1884,14 +1070,8 @@ footer p {
 
     </div>
 
-
 </section>
 
-
-
-<!-- ===================================================
-     عن المكتبة
-=================================================== -->
 
 <section id="about">
 
@@ -1904,31 +1084,22 @@ footer p {
         <div class="gold-line"></div>
 
         <p>
-
             مكتبة عامودا الرقمية هي منصة إلكترونية
             تهدف إلى جمع التطبيقات والبرامج والكتب
             الرقمية في مكان واحد، وتقديمها بطريقة
             منظمة وسهلة الاستخدام للزوار.
-
         </p>
 
     </div>
 
 </section>
 
-
 </main>
 
-
-
-<!-- ===================================================
-     الإحصائيات
-=================================================== -->
 
 <section class="stats">
 
     <div class="stats-inner">
-
 
         <div class="stat">
 
@@ -1974,16 +1145,10 @@ footer p {
 
         </div>
 
-
     </div>
 
 </section>
 
-
-
-<!-- ===================================================
-     Footer
-=================================================== -->
 
 <footer>
 
@@ -2004,33 +1169,19 @@ footer p {
 </footer>
 
 
-
-<!-- ===================================================
-     زر الأعلى
-=================================================== -->
-
 <button
     id="topButton"
     onclick="scrollToTop()">
-
     ↑
-
 </button>
 
-
-
-<!-- ===================================================
-     نافذة التفاصيل
-=================================================== -->
 
 <div
     id="detailsModal"
     class="modal"
     onclick="closeModalOutside(event)">
 
-
     <div class="modal-box">
-
 
         <div class="modal-header">
 
@@ -2050,9 +1201,7 @@ footer p {
         <div class="modal-body">
 
             <p id="modalDescription">
-
                 معلومات العنصر ستظهر هنا.
-
             </p>
 
 
@@ -2085,19 +1234,13 @@ footer p {
 </div>
 
 
-
 <script>
-
-/* =====================================================
-   Supabase
-===================================================== */
 
 const SUPABASE_URL =
     "https://topktljgtexniilikpwa.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_Uu4yVJnpnUh4o3aYHnzGBA_XeDXosEt";
-
 
 const supabaseClient =
     window.supabase.createClient(
@@ -2106,37 +1249,20 @@ const supabaseClient =
     );
 
 
-/* =====================================================
-   بيانات المكتبة
-===================================================== */
-
 let libraryItems = [];
 
 let currentItem = null;
 
 
-/* =====================================================
-   القائمة الهاتفية
-===================================================== */
-
 function toggleMenu() {
 
     const menu =
-        document.getElementById(
-            "mobileMenu"
-        );
+        document.getElementById("mobileMenu");
 
-
-    if (
-        menu.style.display === "block"
-    ) {
-
+    if (menu.style.display === "block") {
         menu.style.display = "none";
-
     } else {
-
         menu.style.display = "block";
-
     }
 
 }
@@ -2151,18 +1277,10 @@ function closeMenu() {
 }
 
 
-
-/* =====================================================
-   جلب البيانات من Supabase
-===================================================== */
-
 async function loadLibrary() {
 
     const grid =
-        document.getElementById(
-            "itemsGrid"
-        );
-
+        document.getElementById("itemsGrid");
 
     try {
 
@@ -2176,7 +1294,6 @@ async function loadLibrary() {
                         ascending: false
                     }
                 );
-
 
         if (error) {
 
@@ -2209,9 +1326,7 @@ async function loadLibrary() {
 
         }
 
-
         libraryItems = data || [];
-
 
         renderItems(libraryItems);
 
@@ -2244,24 +1359,13 @@ async function loadLibrary() {
 }
 
 
-
-/* =====================================================
-   رسم البطاقات
-===================================================== */
-
 function renderItems(items) {
 
     const grid =
-        document.getElementById(
-            "itemsGrid"
-        );
-
+        document.getElementById("itemsGrid");
 
     const noResults =
-        document.getElementById(
-            "noResults"
-        );
-
+        document.getElementById("noResults");
 
     if (!items || items.length === 0) {
 
@@ -2273,40 +1377,29 @@ function renderItems(items) {
 
     }
 
-
     noResults.style.display = "none";
-
 
     grid.innerHTML =
         items.map(function(item) {
 
             let icon = "📱";
-
             let typeName = "تطبيق أندرويد";
-
 
             if (item.type === "computer") {
 
                 icon = "💻";
-
-                typeName =
-                    "برنامج كمبيوتر";
+                typeName = "برنامج كمبيوتر";
 
             }
-
 
             if (item.type === "books") {
 
                 icon = "📚";
-
-                typeName =
-                    "كتاب PDF";
+                typeName = "كتاب PDF";
 
             }
 
-
             let imageHTML = "";
-
 
             if (
                 item.image_url &&
@@ -2324,21 +1417,15 @@ function renderItems(items) {
 
             }
 
-
             const searchText = [
 
                 item.title || "",
-
                 item.author || "",
-
                 item.description || "",
-
                 item.version || "",
-
                 typeName
 
             ].join(" ").toLowerCase();
-
 
             return `
 
@@ -2352,9 +1439,7 @@ function renderItems(items) {
                         ${imageHTML}
 
                         <div class="item-icon">
-
                             ${icon}
-
                         </div>
 
                     </div>
@@ -2363,18 +1448,12 @@ function renderItems(items) {
                     <div class="item-content">
 
                         <div class="item-type">
-
                             ${typeName}
-
                         </div>
-
 
                         <div class="item-title">
-
                             ${escapeHTML(item.title)}
-
                         </div>
-
 
                         <div class="item-description">
 
@@ -2388,7 +1467,6 @@ function renderItems(items) {
                             )}
 
                         </div>
-
 
                         <button
                             class="details-button"
@@ -2406,77 +1484,52 @@ function renderItems(items) {
 
         }).join("");
 
-
     updateCounters();
 
 }
 
 
-
-/* =====================================================
-   حماية النصوص القادمة من قاعدة البيانات
-===================================================== */
-
 function escapeHTML(value) {
 
-    if (value === null || value === undefined) {
+    if (
+        value === null ||
+        value === undefined
+    ) {
 
         return "";
 
     }
 
-
     return String(value)
-
         .replace(/&/g, "&amp;")
-
         .replace(/</g, "&lt;")
-
         .replace(/>/g, "&gt;")
-
         .replace(/"/g, "&quot;")
-
         .replace(/'/g, "&#039;");
 
 }
 
 
-
-/* =====================================================
-   البحث
-===================================================== */
-
 function searchItems() {
 
     const search =
         document
-            .getElementById(
-                "searchInput"
-            )
+            .getElementById("searchInput")
             .value
             .toLowerCase()
             .trim();
 
-
     const cards =
-        document.querySelectorAll(
-            ".item-card"
-        );
-
+        document.querySelectorAll(".item-card");
 
     let found = 0;
-
 
     cards.forEach(function(card) {
 
         const text =
-            card.dataset.search
-                .toLowerCase();
+            card.dataset.search.toLowerCase();
 
-
-        if (
-            text.includes(search)
-        ) {
+        if (text.includes(search)) {
 
             card.style.display = "";
 
@@ -2489,7 +1542,6 @@ function searchItems() {
         }
 
     });
-
 
     document.getElementById(
         "noResults"
@@ -2501,27 +1553,16 @@ function searchItems() {
 }
 
 
-
-/* =====================================================
-   تصفية القسم
-===================================================== */
-
 function filterType(type) {
 
     const cards =
-        document.querySelectorAll(
-            ".item-card"
-        );
-
+        document.querySelectorAll(".item-card");
 
     let found = 0;
 
-
     cards.forEach(function(card) {
 
-        if (
-            card.dataset.type === type
-        ) {
+        if (card.dataset.type === type) {
 
             card.style.display = "";
 
@@ -2535,7 +1576,6 @@ function filterType(type) {
 
     });
 
-
     document.getElementById(
         "noResults"
     ).style.display =
@@ -2543,11 +1583,9 @@ function filterType(type) {
         ? "block"
         : "none";
 
-
     document.getElementById(
         "searchInput"
     ).value = "";
-
 
     document
         .getElementById("latest")
@@ -2557,11 +1595,6 @@ function filterType(type) {
 
 }
 
-
-
-/* =====================================================
-   عرض التفاصيل
-===================================================== */
 
 function showDetailsById(id) {
 
@@ -2575,40 +1608,23 @@ function showDetailsById(id) {
             }
         );
 
-
     if (!item) {
-
         return;
-
     }
-
 
     currentItem = item;
 
-
     const modal =
-        document.getElementById(
-            "detailsModal"
-        );
-
+        document.getElementById("detailsModal");
 
     const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
+        document.getElementById("modalTitle");
 
     const modalDescription =
-        document.getElementById(
-            "modalDescription"
-        );
-
+        document.getElementById("modalDescription");
 
     const modalIcon =
-        document.getElementById(
-            "modalIcon"
-        );
-
+        document.getElementById("modalIcon");
 
     if (item.type === "android") {
 
@@ -2628,21 +1644,16 @@ function showDetailsById(id) {
 
     }
 
-
     modalTitle.textContent =
         item.title || "بدون عنوان";
 
-
     let description = "";
-
 
     if (item.description) {
 
-        description +=
-            item.description;
+        description += item.description;
 
     }
-
 
     if (
         item.author &&
@@ -2655,7 +1666,6 @@ function showDetailsById(id) {
 
     }
 
-
     if (
         item.version &&
         item.type !== "books"
@@ -2667,7 +1677,6 @@ function showDetailsById(id) {
 
     }
 
-
     if (!description) {
 
         description =
@@ -2675,16 +1684,13 @@ function showDetailsById(id) {
 
     }
 
-
     modalDescription.textContent =
         description;
-
 
     const downloadButton =
         document.getElementById(
             "downloadButton"
         );
-
 
     if (
         item.file_url &&
@@ -2708,16 +1714,44 @@ function showDetailsById(id) {
 
     }
 
-
     modal.style.display = "flex";
 
 }
 
 
-
 /* =====================================================
-   إغلاق النافذة
+   تعديل طريقة التحميل
 ===================================================== */
+
+function openDownload() {
+
+    if (
+        !currentItem ||
+        !currentItem.file_url
+    ) {
+
+        return;
+
+    }
+
+    const url =
+        currentItem.file_url.trim();
+
+    if (!url) {
+
+        return;
+
+    }
+
+    /*
+       الانتقال المباشر إلى الرابط
+       بدل فتح نافذة جديدة.
+    */
+
+    window.location.href = url;
+
+}
+
 
 function closeModal() {
 
@@ -2742,36 +1776,6 @@ function closeModalOutside(event) {
 }
 
 
-
-/* =====================================================
-   زر التحميل
-===================================================== */
-
-function openDownload() {
-
-    if (
-        !currentItem ||
-        !currentItem.file_url
-    ) {
-
-        return;
-
-    }
-
-
-    window.open(
-        currentItem.file_url,
-        "_blank"
-    );
-
-}
-
-
-
-/* =====================================================
-   زر العودة للأعلى
-===================================================== */
-
 window.addEventListener(
     "scroll",
     function() {
@@ -2781,18 +1785,13 @@ window.addEventListener(
                 "topButton"
             );
 
+        if (window.scrollY > 350) {
 
-        if (
-            window.scrollY > 350
-        ) {
-
-            button.style.display =
-                "block";
+            button.style.display = "block";
 
         } else {
 
-            button.style.display =
-                "none";
+            button.style.display = "none";
 
         }
 
@@ -2800,32 +1799,21 @@ window.addEventListener(
 );
 
 
-
 function scrollToTop() {
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
 
 }
 
 
-
-/* =====================================================
-   إغلاق القائمة عند تكبير الشاشة
-===================================================== */
-
 window.addEventListener(
     "resize",
     function() {
 
-        if (
-            window.innerWidth > 700
-        ) {
+        if (window.innerWidth > 700) {
 
             document.getElementById(
                 "mobileMenu"
@@ -2836,11 +1824,6 @@ window.addEventListener(
     }
 );
 
-
-
-/* =====================================================
-   تحديث الإحصائيات
-===================================================== */
 
 function updateCounters() {
 
@@ -2853,7 +1836,6 @@ function updateCounters() {
             }
         ).length;
 
-
     const computer =
         libraryItems.filter(
             function(item) {
@@ -2862,7 +1844,6 @@ function updateCounters() {
 
             }
         ).length;
-
 
     const books =
         libraryItems.filter(
@@ -2873,16 +1854,13 @@ function updateCounters() {
             }
         ).length;
 
-
     document.getElementById(
         "androidCount"
     ).textContent = android;
 
-
     document.getElementById(
         "computerCount"
     ).textContent = computer;
-
 
     document.getElementById(
         "bookCount"
@@ -2891,16 +1869,11 @@ function updateCounters() {
 }
 
 
-
-/* =====================================================
-   تشغيل الموقع
-===================================================== */
-
 loadLibrary();
 
 </script>
 
-
 </body>
 
 </html>
+```
