@@ -454,9 +454,14 @@ nav a:hover {
 
 .item-description {
     color: #263238;
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.75;
     font-weight: 500;
+    height: 52px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .details-button {
@@ -618,10 +623,14 @@ footer p {
 }
 
 .modal-body p {
-    color: var(--muted);
-    font-size: 13px;
+    color: #17212b;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 2;
     white-space: pre-line;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-left: 5px;
 }
 
 .modal-buttons {
@@ -748,7 +757,9 @@ footer p {
     }
 
     .item-description {
-        font-size: 10px;
+        font-size: 14px;
+        line-height: 1.7;
+        height: 48px;
     }
 
     .details-button {
