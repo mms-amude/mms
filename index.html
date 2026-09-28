@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -932,7 +931,7 @@ footer p {
                 id="searchInput"
                 type="text"
                 placeholder="ابحث عن تطبيق أو برنامج أو كتاب..."
-                onkeyup="searchItems()">
+                oninput="searchItems()">
 
         </div>
 
@@ -1627,92 +1626,6 @@ function escapeHTML(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
-}
-
-
-function searchItems() {
-
-    const search =
-        document
-            .getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
-
-    const cards =
-        document.querySelectorAll(".item-card");
-
-    let found = 0;
-
-    cards.forEach(function(card) {
-
-        const text =
-            card.dataset.search.toLowerCase();
-
-        if (text.includes(search)) {
-
-            card.style.display = "";
-
-            found++;
-
-        } else {
-
-            card.style.display = "none";
-
-        }
-
-    });
-
-    document.getElementById(
-        "noResults"
-    ).style.display =
-        found === 0
-        ? "block"
-        : "none";
-
-}
-
-
-function filterType(type) {
-
-    const cards =
-        document.querySelectorAll(".item-card");
-
-    let found = 0;
-
-    cards.forEach(function(card) {
-
-        if (card.dataset.type === type) {
-
-            card.style.display = "";
-
-            found++;
-
-        } else {
-
-            card.style.display = "none";
-
-        }
-
-    });
-
-    document.getElementById(
-        "noResults"
-    ).style.display =
-        found === 0
-        ? "block"
-        : "none";
-
-    document.getElementById(
-        "searchInput"
-    ).value = "";
-
-    document
-        .getElementById("latest")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
 
 }
 
