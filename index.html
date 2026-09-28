@@ -311,8 +311,8 @@ nav a:hover {
 .specialties {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    margin-bottom: 70px;
+    gap: 15px;
+    margin-bottom: 58px;
 }
 
 .specialty {
@@ -320,8 +320,8 @@ nav a:hover {
     overflow: hidden;
     background: white;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 35px 25px;
+    border-radius: 14px;
+    padding: 16px 12px;
     text-align: center;
     cursor: pointer;
     box-shadow: var(--shadow);
@@ -345,29 +345,36 @@ nav a:hover {
 }
 
 .specialty-icon {
-    width: 70px;
-    height: 70px;
-    margin: auto auto 17px;
-    border-radius: 18px;
+    width: 48px;
+    height: 48px;
+    margin: auto auto 8px;
+    border-radius: 13px;
     background: var(--navy);
     color: var(--gold-light);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 31px;
     position: relative;
+    box-shadow: 0 6px 16px rgba(11,34,57,.12);
     z-index: 2;
+}
+
+.specialty-icon svg {
+    width: 27px;
+    height: 27px;
+    fill: currentColor;
+    display: block;
 }
 
 .specialty h3 {
     color: var(--navy);
-    font-size: 19px;
-    margin-bottom: 5px;
+    font-size: 16px;
+    margin-bottom: 2px;
 }
 
 .specialty p {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .gold-line {
@@ -453,14 +460,9 @@ nav a:hover {
 
 .item-description {
     color: #263238;
-    font-size: 15px;
-    line-height: 1.75;
+    font-size: 16px;
+    line-height: 1.8;
     font-weight: 500;
-    height: 52px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
 }
 
 .details-button {
@@ -622,14 +624,55 @@ footer p {
 }
 
 .modal-body p {
-    color: #17212b;
-    font-size: 16px;
-    font-weight: 500;
+    color: var(--muted);
+    font-size: 13px;
     line-height: 2;
     white-space: pre-line;
+}
+
+.modal-body p {
+    color: #17212b;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 2;
+    white-space: normal;
     max-height: 320px;
     overflow-y: auto;
-    padding-left: 5px;
+    overflow-wrap: anywhere;
+}
+
+.modal-body p a {
+    color: var(--navy-3);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 3px;
+}
+
+.extra-download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 14px;
+}
+
+.extra-download-button {
+    width: 100%;
+    border: 1px solid rgba(199,164,91,.55);
+    border-radius: 9px;
+    padding: 9px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--cream);
+    color: var(--navy);
+    transition: .25s;
+}
+
+.extra-download-button:hover {
+    background: var(--gold);
+    color: var(--navy);
 }
 
 .modal-buttons {
@@ -730,27 +773,31 @@ footer p {
 
     .specialties {
         grid-template-columns: 1fr;
-        gap: 15px;
-        margin-bottom: 55px;
+        gap: 12px;
+        margin-bottom: 50px;
     }
 
     .specialty {
-        padding: 20px 16px;
+        padding: 15px 12px;
     }
 
     .specialty-icon {
-        width: 54px;
-        height: 54px;
-        font-size: 24px;
-        margin-bottom: 11px;
+        width: 45px;
+        height: 45px;
+        margin-bottom: 7px;
+    }
+
+    .specialty-icon svg {
+        width: 25px;
+        height: 25px;
     }
 
     .specialty h3 {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .specialty p {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .items-grid {
@@ -771,9 +818,7 @@ footer p {
     }
 
     .item-description {
-        font-size: 14px;
-        line-height: 1.7;
-        height: 48px;
+        font-size: 10px;
     }
 
     .details-button {
@@ -946,7 +991,7 @@ footer p {
                 id="searchInput"
                 type="text"
                 placeholder="ابحث عن تطبيق أو برنامج أو كتاب..."
-                oninput="searchItems()">
+                onkeyup="searchItems()">
 
         </div>
 
@@ -980,8 +1025,10 @@ footer p {
             class="specialty"
             onclick="filterType('android')">
 
-            <div class="specialty-icon">
-                📱
+            <div class="specialty-icon" aria-label="Android">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.2 8.4h9.6v8.1c0 .9-.7 1.6-1.6 1.6h-6.4c-.9 0-1.6-.7-1.6-1.6V8.4Zm-1.1 1.1H5v5.1h1.1V9.5Zm12.8 0H20v5.1h-1.1V9.5ZM9 6.9 7.8 4.8l.9-.5L10 6.5c.6-.2 1.3-.3 2-.3s1.4.1 2 .3l1.3-2.2.9.5-1.2 2.1c1.1.6 1.8 1.6 1.8 2.8H7.2c0-1.2.7-2.2 1.8-2.8ZM9.5 7.8c.3 0 .5-.2.5-.5s-.2-.5-.5-.5-.5.2-.5.5Zm5 0c.3 0 .5-.2.5-.5s-.2-.5-.5-.5-.5.2-.5.5Z"/>
+                </svg>
             </div>
 
             <h3>
@@ -999,8 +1046,10 @@ footer p {
             class="specialty"
             onclick="filterType('computer')">
 
-            <div class="specialty-icon">
-                💻
+            <div class="specialty-icon" aria-label="Windows">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4.5 11 3.4v8.1H3V4.5Zm9-1.25L21 2v9.5h-9V3.25ZM3 12.5h8v8.1L3 19.5v-7Zm9 0h9V22l-9-1.25V12.5Z"/>
+                </svg>
             </div>
 
             <h3>
@@ -1018,8 +1067,10 @@ footer p {
             class="specialty"
             onclick="filterType('books')">
 
-            <div class="specialty-icon">
-                📚
+            <div class="specialty-icon" aria-label="PDF Books">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2.5h9l4 4v15H6a2 2 0 0 1-2-2v-15a2 2 0 0 1 2-2Zm8 1.7v3.2h3.2L14 4.2ZM8 10h8v1.3H8V10Zm0 3h8v1.3H8V13Zm0 3h5.5v1.3H8V16Z"/>
+                </svg>
             </div>
 
             <h3>
@@ -1229,6 +1280,7 @@ footer p {
                 معلومات العنصر ستظهر هنا.
             </p>
 
+            <div id="extraDownloadButtons" class="extra-download-buttons"></div>
 
             <div class="modal-buttons">
 
@@ -1277,8 +1329,6 @@ const supabaseClient =
 let libraryItems = [];
 
 let currentItem = null;
-
-let currentTypeFilter = "all";
 
 
 function toggleMenu() {
@@ -1516,114 +1566,6 @@ function renderItems(items) {
 }
 
 
-
-function normalizeSearchText(value) {
-
-    return String(value || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[أإآ]/g, "ا")
-        .replace(/ى/g, "ي")
-        .replace(/ـ/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
-
-}
-
-
-function getSearchText(item) {
-
-    let typeName = "تطبيق أندرويد";
-
-    if (item.type === "computer") {
-        typeName = "برنامج كمبيوتر";
-    }
-
-    if (item.type === "books") {
-        typeName = "كتاب PDF";
-    }
-
-    return normalizeSearchText([
-        item.title || "",
-        item.author || "",
-        item.description || "",
-        item.version || "",
-        typeName
-    ].join(" "));
-
-}
-
-
-function applyLibraryFilters() {
-
-    const input =
-        document.getElementById("searchInput");
-
-    const query =
-        normalizeSearchText(input ? input.value : "");
-
-    const words =
-        query
-            ? query.split(" ").filter(Boolean)
-            : [];
-
-    const filtered =
-        libraryItems.filter(function(item) {
-
-            const matchesType =
-                currentTypeFilter === "all" ||
-                item.type === currentTypeFilter;
-
-            if (!matchesType) {
-                return false;
-            }
-
-            if (words.length === 0) {
-                return true;
-            }
-
-            const searchable =
-                getSearchText(item);
-
-            return words.every(function(word) {
-                return searchable.includes(word);
-            });
-
-        });
-
-    renderItems(filtered);
-
-}
-
-
-function searchItems() {
-
-    applyLibraryFilters();
-
-}
-
-
-function filterType(type) {
-
-    currentTypeFilter =
-        type || "all";
-
-    applyLibraryFilters();
-
-    const latest =
-        document.getElementById("latest");
-
-    if (latest) {
-        latest.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-
-}
-
-
 function escapeHTML(value) {
 
     if (
@@ -1642,6 +1584,154 @@ function escapeHTML(value) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 
+}
+
+
+function searchItems() {
+
+    const search =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const cards =
+        document.querySelectorAll(".item-card");
+
+    let found = 0;
+
+    cards.forEach(function(card) {
+
+        const text =
+            card.dataset.search.toLowerCase();
+
+        if (text.includes(search)) {
+
+            card.style.display = "";
+
+            found++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById(
+        "noResults"
+    ).style.display =
+        found === 0
+        ? "block"
+        : "none";
+
+}
+
+
+function filterType(type) {
+
+    const cards =
+        document.querySelectorAll(".item-card");
+
+    let found = 0;
+
+    cards.forEach(function(card) {
+
+        if (card.dataset.type === type) {
+
+            card.style.display = "";
+
+            found++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById(
+        "noResults"
+    ).style.display =
+        found === 0
+        ? "block"
+        : "none";
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
+    document
+        .getElementById("latest")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+function linkifyDescription(text) {
+
+    const safe = escapeHTML(String(text || ""));
+
+    return safe.replace(
+        /(https?:\/\/[^\s<]+)/gi,
+        function(url) {
+
+            let clean = url;
+            let trailing = "";
+            const match = clean.match(/[.,،؛:!?؟)\]}]+$/);
+
+            if (match) {
+                trailing = match[0];
+                clean = clean.slice(0, -trailing.length);
+            }
+
+            return '<a href="' + escapeHTML(clean) +
+                   '" target="_blank" rel="noopener noreferrer">' +
+                   clean + '</a>' + trailing;
+        }
+    );
+}
+
+/*
+صيغة الأزرار الإضافية داخل وصف التفاصيل:
+[[button|تحميل APK|https://example.com/app.apk]]
+[[button|النسخة القديمة|https://example.com/old.apk]]
+يمكن وضع أكثر من زر في نفس الوصف.
+*/
+function renderModalDescription(text) {
+
+    const box = document.getElementById("modalDescription");
+    const buttonsBox = document.getElementById("extraDownloadButtons");
+
+    if (!box || !buttonsBox) return;
+
+    const raw = String(text || "");
+    const pattern = /\[\[button\|([^|\]]+)\|(https?:\/\/[^\]\s]+)\]\]/gi;
+    const buttons = [];
+
+    const cleanText = raw.replace(pattern, function(full, label, url) {
+        buttons.push({ label: label.trim(), url: url.trim() });
+        return "";
+    }).trim();
+
+    box.innerHTML = linkifyDescription(cleanText).replace(/\n/g, "<br>");
+    buttonsBox.innerHTML = "";
+
+    buttons.forEach(function(item) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "extra-download-button";
+        button.textContent = item.label;
+        button.onclick = function() {
+            window.location.href = item.url;
+        };
+        buttonsBox.appendChild(button);
+    });
 }
 
 
@@ -1733,8 +1823,7 @@ function showDetailsById(id) {
 
     }
 
-    modalDescription.textContent =
-        description;
+    renderModalDescription(description);
 
     const downloadButton =
         document.getElementById(
