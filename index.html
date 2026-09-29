@@ -310,12 +310,15 @@ nav a:hover {
 
 .specialties {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(3, minmax(0, 220px));
+    justify-content: center;
+    gap: 14px;
     margin-bottom: 58px;
 }
 
 .specialty {
+    width: 100%;
+    box-sizing: border-box;
     position: relative;
     overflow: hidden;
     background: white;
@@ -402,6 +405,9 @@ nav a:hover {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: .3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .item-card:hover {
@@ -443,6 +449,9 @@ nav a:hover {
 
 .item-content {
     padding: 17px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .item-type {
@@ -460,9 +469,15 @@ nav a:hover {
 
 .item-description {
     color: #263238;
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.75;
     font-weight: 500;
+    min-height: 52px;
+    max-height: 52px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .details-button {
@@ -474,7 +489,8 @@ nav a:hover {
     border-radius: 8px;
     font-family: inherit;
     cursor: pointer;
-    margin-top: 13px;
+    margin-top: auto;
+    padding-top: 13px;
     transition: .3s;
 }
 
