@@ -221,7 +221,7 @@ nav a:hover {
     max-width: 1000px;
     margin: auto;
     text-align: center;
-    padding: 78px 20px 85px;
+    padding: 58px 20px 62px;
     position: relative;
     z-index: 2;
 }
@@ -992,7 +992,7 @@ nav a {
     }
 
     .hero-inner {
-        padding: 28px 14px 30px;
+        padding: 24px 14px 26px;
     }
 
     .hero h1 {
@@ -1004,8 +1004,18 @@ nav a {
         line-height: 1.7;
     }
 
+    .search-login-row {
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    .admin-login-btn {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
     .search-box {
-        margin-top: 14px;
+        margin-top: 0;
     }
 
     .search-box input {
@@ -1034,10 +1044,25 @@ nav a {
         background: var(--gold-light);
     }
 
-    .hero-login-btn {
+    .search-login-row {
         display: flex;
-        width: max-content;
-        margin: 16px auto 0 0;
+        align-items: center;
+        direction: ltr;
+        gap: 12px;
+        max-width: 680px;
+        margin: 24px auto 0;
+    }
+
+    .search-login-row .search-box {
+        flex: 1;
+        min-width: 0;
+        max-width: none;
+        margin: 0;
+    }
+
+    .hero-login-btn {
+        flex: 0 0 auto;
+        margin: 0;
     }
 
 </style>
@@ -1063,21 +1088,25 @@ nav a {
             في مكان واحد، بتصميم بسيط وأنيق وسهل الاستخدام.
         </p>
 
-        <div class="search-box">
+        <div class="search-login-row">
 
-            <span class="search-icon">
-                🔍
-            </span>
+            <a class="admin-login-btn hero-login-btn" href="https://mms-amude.github.io/mms/admin.html">تسجيل الدخول</a>
 
-            <input
-                id="searchInput"
-                type="text"
-                placeholder="ابحث عن تطبيق أو برنامج أو كتاب..."
-                onkeyup="searchItems()">
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="ابحث عن تطبيق أو برنامج أو كتاب..."
+                    onkeyup="searchItems()">
+
+            </div>
 
         </div>
-
-        <a class="admin-login-btn hero-login-btn" href="https://mms-amude.github.io/mms/admin.html">تسجيل الدخول</a>
 
     </div>
 
